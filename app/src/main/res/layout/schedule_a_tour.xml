@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:layout_margin="16dp"
+        android:text="Request A Private Tour" />
+
+    <EditText
+        android:id="@+id/request_name"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="#4Dffffff"
+        android:padding="10dp"
+        android:hint="Your Full Name" />
+
+    <EditText
+        android:id="@+id/request_email"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="#4Dffffff"
+        android:padding="10dp"
+        android:hint="Your Email Address" />
+
+    <EditText
+        android:id="@+id/request_phone"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="#4Dffffff"
+        android:padding="10dp"
+        android:hint="Your Phone Number "/>
+
+    <EditText
+        android:id="@+id/request_address"
+        android:layout_width="320dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="#4Dffffff"
+        android:padding="10dp"
+        android:text="I am interested in 404 Jewel Ave, Saint Charles, IL 60174." />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/schedule_tour_button"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Send Message"
+        android:layout_gravity="center"
+        app:bootstrapBrand="warning"
+        app:bootstrapSize="lg"
+        app:buttonMode="regular"
+        app:showOutline="false"
+        app:roundedCorners="true"
+        android:layout_marginTop="16dp"/>
+
+
+</LinearLayout>
