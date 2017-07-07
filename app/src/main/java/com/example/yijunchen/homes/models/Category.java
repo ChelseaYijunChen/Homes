@@ -6,7 +6,7 @@ package com.example.yijunchen.homes.models;
 
 public class Category {
 
-    private int id;
+    private String id;
     private String name;
     private String desc;
     private String status;
@@ -14,18 +14,18 @@ public class Category {
     public Category() {
     }
 
-    public Category(int id, String name, String desc, String status) {
+    public Category(String id, String name, String desc, String status) {
         this.id = id;
         this.name = name;
         this.desc = desc;
         this.status = status;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

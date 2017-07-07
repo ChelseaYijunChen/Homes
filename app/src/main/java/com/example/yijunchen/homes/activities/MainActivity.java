@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.example.yijunchen.homes.R;
 import com.example.yijunchen.homes.fragments.AllPropertyFragment;
+import com.example.yijunchen.homes.fragments.Frag_Category;
 import com.example.yijunchen.homes.fragments.MyMapFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,10 +22,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final AllPropertyFragment allPropertyFragment = new AllPropertyFragment();
+
+        final Frag_Category frag_category = new Frag_Category();
+
+
         final MyMapFragment myMapFragment = new MyMapFragment();
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_fragment_container, allPropertyFragment).commit();
+                .replace(R.id.main_fragment_container, frag_category).commit();
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (item.getItemId()) {
                     case R.id.action_homepage:
-                        fragment = allPropertyFragment;
+                        fragment = frag_category;
                         break;
                     case R.id.action_search:
                         fragment = myMapFragment;
@@ -45,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.v("nava fragment",fragment.toString());
                 if(fragment == null){
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.main_fragment_container, allPropertyFragment).commit();
+                            .replace(R.id.main_fragment_container, frag_category).commit();
+                           // .replace(R.id.main_fragment_container, allPropertyFragment).commit();
                 } else{
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_fragment_container, fragment).commit();
