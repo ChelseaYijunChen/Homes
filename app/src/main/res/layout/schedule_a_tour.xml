@@ -46,14 +46,15 @@
         android:hint="Your Phone Number "/>
 
     <EditText
-        android:id="@+id/request_address"
+        android:id="@+id/request_body"
         android:layout_width="320dp"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:background="#4Dffffff"
         android:padding="10dp"
-        android:text="I am interested in 404 Jewel Ave, Saint Charles, IL 60174." />
+        android:text="I am interested in 404 Jewel Ave, Saint Charles, IL 60174.
+I'd like schedule a tour." />
 
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/schedule_tour_button"

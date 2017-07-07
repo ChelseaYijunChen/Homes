@@ -4,11 +4,13 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,8 +34,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.ui.BubbleIconFactory;
+import com.google.maps.android.ui.IconGenerator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,7 +50,7 @@ import java.util.List;
  * Created by yijunchen on 7/6/17.
  */
 
-public class MyMapFragment extends Fragment implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback ,GoogleMap.OnMyLocationButtonClickListener{
+public class MyMapFragment extends Fragment implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback ,GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener {
     private GoogleMap mMap;
     //    List<Property> propertyList;
     Context context;
@@ -118,19 +122,54 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
 
         //Bitmap iconBitMap = bubbleIconFactory
 
+        IconGenerator iconFactory = new IconGenerator(getActivity());
+        //iconFactory.setColor(Color.argb(0,34,139,34));
+        iconFactory.setStyle(IconGenerator.STYLE_GREEN);
+//        iconFactory.setStyle(IconGenerator.STYLE_GREEN);
+
         for (int i = 0; i < propertyList.size(); i++) {
             Property property = propertyList.get(i);
             Log.d("property position", property.getLatitude() + " " + property.getLongitude() + " ");
             LatLng pin1 = new LatLng(property.getLatitude(), property.getLongitude());
-            mMap.addMarker(new MarkerOptions()
-                    .position(pin1)
-                    .title("$"+ property.getCost())
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.dialog3)));
+            Marker marker = mMap.addMarker(new MarkerOptions()
+                    .icon(BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon("$"+ property.getCost())))
+                    .position(pin1).anchor(iconFactory.getAnchorU(),iconFactory.getAnchorV()));
+//                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.dialog3)));
+            marker.setTag(property.getId());
             mMap.moveCamera(CameraUpdateFactory.newLatLng(pin1));
+            mMap.setOnMarkerClickListener(this);
+
         }
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
         enableMyLocation();
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        //String s = marker.getTitle();
+        //Integer clickCount = (Integer) marker.getTag();
+        //int position = (int)(marker.getTag());
+//        int position = (int)(marker.getTag());
+//        Toast.makeText(getActivity(), s, Toast.LENGTH_LONG).show();
+//        Log.d("marker title", m);
+        Log.d("marker tag", marker.getTag().toString());
+        Property target = new Property();
+        int propertyId = (int) marker.getTag();
+        for (Property property: propertyList){
+            if(property.getId()==propertyId){
+                target = property;
+            }
+        }
+        ShortViewOfPropertyFragment shortViewOfPropertyFragment = new ShortViewOfPropertyFragment();
+        Bundle args = new Bundle();
+        args.putParcelable("property",target);
+        shortViewOfPropertyFragment.setArguments(args);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.short_view, shortViewOfPropertyFragment);
+        transaction.commit();
+
+        return false;
     }
 
     private void enableMyLocation() {
@@ -169,6 +208,15 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
         return false;
     }
 
+    private void addIcon(IconGenerator iconFactory, CharSequence text, LatLng position) {
+        MarkerOptions markerOptions = new MarkerOptions().
+                icon(BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon(text))).
+                position(position).
+                anchor(iconFactory.getAnchorU(), iconFactory.getAnchorV());
+
+        mMap.addMarker(markerOptions);
+    }
+
     public void JSON_DATA_WEB_CALL(){
 
         StringRequest stringRequest= new StringRequest(GET_JSON_DATA_HTTP_URL,
@@ -200,10 +248,10 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array) {
 
-        Log.d("property json array", "array length"+array.length());
-        for(int i = 0; i<array.length(); i++) {
+        Log.d("property json array", "array length" + array.length());
+        for (int i = 0; i < array.length(); i++) {
 
-            Property property= new Property();
+            Property property = new Property();
 
             try {
                 JSONObject json = array.getJSONObject(i);
@@ -239,6 +287,4 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
         }
 
     }
-
-
 }
