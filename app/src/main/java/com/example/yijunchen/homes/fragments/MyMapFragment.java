@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.FitWindowsFrameLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +56,8 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
     //    List<Property> propertyList;
     Context context;
     MapView mapView;
+    FitWindowsFrameLayout short_view;
+    Property target = new Property();
 
     List<Property> propertyList = new ArrayList<>();
     String GET_JSON_DATA_HTTP_URL = "http://rjtmobile.com/aamir/realestate/realestate_app/getproperty.php";
@@ -98,6 +101,7 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
         }
 
         View v = inflater.inflate(R.layout.map_fragment, container, false);
+        short_view = (FitWindowsFrameLayout) v.findViewById(R.id.short_view);
 
         context = getContext();
         //propertyList = (List<Property>) getActivity().getIntent().getSerializableExtra("propertyList");
@@ -114,13 +118,6 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        //LatLng sydney = new LatLng(-34, 151);
-
-        BubbleIconFactory bubbleIconFactory = new BubbleIconFactory();
-
-        //Bitmap iconBitMap = bubbleIconFactory
 
         IconGenerator iconFactory = new IconGenerator(getActivity());
         //iconFactory.setColor(Color.argb(0,34,139,34));
@@ -147,14 +144,7 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        //String s = marker.getTitle();
-        //Integer clickCount = (Integer) marker.getTag();
-        //int position = (int)(marker.getTag());
-//        int position = (int)(marker.getTag());
-//        Toast.makeText(getActivity(), s, Toast.LENGTH_LONG).show();
-//        Log.d("marker title", m);
         Log.d("marker tag", marker.getTag().toString());
-        Property target = new Property();
         int propertyId = (int) marker.getTag();
         for (Property property: propertyList){
             if(property.getId()==propertyId){
@@ -168,6 +158,19 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.short_view, shortViewOfPropertyFragment);
         transaction.commit();
+
+        short_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PropertyDetailFragment propertyDetailFragment = new PropertyDetailFragment();
+                Bundle args = new Bundle();
+                args.putParcelable("property",target);
+                propertyDetailFragment.setArguments(args);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragment_container, propertyDetailFragment);
+                transaction.commit();
+            }
+        });
 
         return false;
     }
@@ -280,11 +283,7 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
                 e.printStackTrace();
             }
             propertyList.add(property);
-            //recycleViewAdapter_subCategory.notifyDataSetChanged();
 
-            //Log.d("property json array", "list size"+propertyList.size());
-            //recyclerViewadapter.notifyDataSetChanged();
         }
-
     }
 }

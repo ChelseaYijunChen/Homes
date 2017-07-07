@@ -6,4 +6,6 @@
     <color name="colorWhite">#ffffff</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
+    <color name="third_text">#aaaaaa</color>
+    <color name="fourth_text">#c4c4c4</color>
 </resources>

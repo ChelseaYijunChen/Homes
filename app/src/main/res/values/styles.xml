@@ -19,7 +19,7 @@
     <style name="Big_Divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/secondary_text</item>
+        <item name="android:background">@color/third_text</item>
     </style>
 
     <style name="White_Divider">
@@ -30,8 +30,9 @@
 
     <style name="Hor_Divider">
         <item name="android:layout_width">1dp</item>
+        <item name="android:layout_margin">5dp</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/secondary_text</item>
+        <item name="android:background">@color/third_text</item>
     </style>
 
 </resources>
