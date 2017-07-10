@@ -5,24 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="52dp"
     android:background="@color/titleBar">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List"
+        android:id="@+id/list_map"
+        android:background="@color/titleBar"
+
+        android:textColor="@color/secondary_text"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/list_map"
+        android:layout_toLeftOf="@+id/filter"
+        android:id="@+id/search"
+        android:background="@color/titleBar">
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/logo"
-            android:id="@+id/logo_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search"
+            android:id="@+id/search_icon"
             android:layout_centerVertical="true"
-            />
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/logo_text"
-            android:src="@drawable/logo_text_with_font"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/logo_image"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <EditText android:id="@+id/search_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Custom Search"
+
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/clear_search"
+            android:layout_toRightOf="@+id/search_icon"
+
+            android:layout_alignParentTop="true" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/close"
+            android:background="@color/titleBar"
+            android:id="@+id/clear_search"
+
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/search_icon" />
+
 
 
     </RelativeLayout>
@@ -30,6 +63,17 @@
 
 
 
+    <Button
+        android:id="@+id/filter"
+        android:background="@color/titleBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter"
+        android:textColor="@color/secondary_text"
 
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>

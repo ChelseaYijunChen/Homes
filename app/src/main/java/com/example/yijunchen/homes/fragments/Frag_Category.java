@@ -41,8 +41,13 @@ public class Frag_Category extends Fragment {
     HomeViewPagerAdapter homeViewPagerAdapter;
     private ArrayList<String> mTitles;
     ArrayList<All_Property_Test> mViewPagerFragments;
-    Frag_Category one, two, three;
     RequestQueue requestQueue ;
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,11 +56,11 @@ public class Frag_Category extends Fragment {
         mList = new ArrayList<>();
         tabLayout = (TabLayout) view.findViewById(R.id.home_tabLayout);
         viewPager = (ViewPager) view.findViewById(R.id.home_viewpager);
-
         fetchData();
         return view;
     }
     private void fetchData() {
+
         requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, BASE_URL, new Response.Listener<String>() {
             @Override
@@ -81,7 +86,6 @@ public class Frag_Category extends Fragment {
                             String status = item.getString("PropertyStatus");
                             category.setStatus(status);
                         }
-                        Toast.makeText(getActivity(), category.getId(), Toast.LENGTH_SHORT).show();
                         mList.add(category);
 
                     }
@@ -90,19 +94,20 @@ public class Frag_Category extends Fragment {
                         temp[i] = mList.get(i).getName();
                     }
                     mViewPagerFragments = new ArrayList<All_Property_Test>();
-                    homeViewPagerAdapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
+
 
                     Toast.makeText(getActivity(), mList.size() + "", Toast.LENGTH_SHORT).show();
                     for (int i = 0; i < mList.size(); i++) {
                         All_Property_Test all_property_test = new All_Property_Test();
                        // Frag_Category frag_category = Frag_Category.newInstance( mList.get(i).getmGroceryId());
-                        ((AppCompatActivity)getContext()).getSupportFragmentManager().beginTransaction().addToBackStack(null).commit();
+                       // ((AppCompatActivity)getContext()).getSupportFragmentManager().beginTransaction().addToBackStack(null).commit();
 
                         Bundle bundle = new Bundle();
                         bundle.putString("CategoryID", mList.get(i).getId());
                         all_property_test.setArguments(bundle);
                         mViewPagerFragments.add(all_property_test);
                     }
+                    homeViewPagerAdapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
                     homeViewPagerAdapter.setTitles(temp);
                     // homeViewPagerAdapter.setTitles(mTitles.toArray());
                     homeViewPagerAdapter.setFragments(mViewPagerFragments);

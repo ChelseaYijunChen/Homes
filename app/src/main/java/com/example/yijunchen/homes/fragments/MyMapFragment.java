@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.FitWindowsFrameLayout;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -80,6 +82,7 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
 
     RequestQueue requestQueue;
 
+    TextView filter;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private boolean mPermissionDenied = false;
@@ -100,6 +103,18 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
 
         View v = inflater.inflate(R.layout.map_fragment, container, false);
         short_view = (FitWindowsFrameLayout) v.findViewById(R.id.short_view);
+        filter = (TextView) v.findViewById(R.id.filter);
+
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getChildFragmentManager();
+
+                fragmentManager.beginTransaction().replace(R.id.map, new Frag_Filter()).commit();
+            }
+        });
+
+
 
         context = getContext();
         //propertyList = (List<Property>) getActivity().getIntent().getSerializableExtra("propertyList");

@@ -5,16 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.yijunchen.homes.fragments.MyMapFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/container">
     <!--<include layout="@layout/toolbar_search_layout" android:id="@+id/titlebar"/>-->
+    <include layout="@layout/map_tool_bar" android:id="@+id/toolbar" />
 
-    <include layout="@layout/map_tool_bar" />
 
 
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+       >
+
 
         <fragment
             android:layout_width="match_parent"
@@ -29,6 +32,7 @@
             android:layout_gravity="bottom"
             android:layout_height="200dp" />
 
-    </FrameLayout>
+    <!--tools:layout="@layout/short_view_of_property"-->
 
-</LinearLayout>
+</FrameLayout>
+    </LinearLayout>

@@ -37,7 +37,7 @@
         <!--android:layout_alignParentEnd="true" />-->
 
     <TextView
-        android:id="@+id/button2"
+        android:id="@+id/filter"
         android:layout_width="80dp"
         android:layout_height="match_parent"
         android:text="Filters"
