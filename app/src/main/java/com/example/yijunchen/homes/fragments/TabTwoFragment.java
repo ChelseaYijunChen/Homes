@@ -42,7 +42,6 @@ public class TabTwoFragment extends Fragment implements BaseSliderView.OnSliderC
     private SliderLayout mDemoSlider;
     List<Property> propertyList = new ArrayList<>();
     List<Property> rentPropertyList = new ArrayList<>();
-
     String GET_JSON_DATA_HTTP_URL = "http://rjtmobile.com/aamir/realestate/realestate_app/getproperty.php";
     String JSON_PROPERTY_ID = "PropertyId";
     String JSON_PROPERTY_NAME = "PropertyName";
