@@ -17,6 +17,8 @@ import com.example.yijunchen.homes.R;
 import com.example.yijunchen.homes.models.Property;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -56,6 +58,7 @@ public class RecycleViewAdapter_SubCategory extends RecyclerView.Adapter<Recycle
     public void onBindViewHolder(RecycleViewAdapter_SubCategory.ViewHolder holder, int position) {
         Property property = propertyList.get(position);
         holder.propertyPrice.setText("$"+property.getCost());
+        holder.propertyName.setText(property.getName());
         Log.d("property img", property.getImgThumb2());
         Picasso.with(context).load(property.getImgThumb2()).into(holder.propertyImg);
     }
@@ -65,8 +68,6 @@ public class RecycleViewAdapter_SubCategory extends RecyclerView.Adapter<Recycle
         return propertyList.size();
     }
 
-
-
     @Override
     public void onClick(View v) {
         if (mOnItemClickListener != null) {
@@ -75,21 +76,20 @@ public class RecycleViewAdapter_SubCategory extends RecyclerView.Adapter<Recycle
         else{
             Log.e("CLICK", "ERROR");
         }
-
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView propertyPrice;
+        public TextView propertyName;
         public ImageView propertyImg ;
 
         public ViewHolder(View itemView) {
 
             super(itemView);
-
             propertyImg = (ImageView) itemView.findViewById(R.id.property_list_img);
             propertyPrice = (TextView) itemView.findViewById(R.id.property_list_price);
-
+            propertyName = (TextView) itemView.findViewById(R.id.property_list_name);
         }
     }
 }

@@ -135,7 +135,6 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
         IconGenerator iconFactory = new IconGenerator(getActivity());
         //iconFactory.setColor(Color.argb(0,34,139,34));
         iconFactory.setStyle(IconGenerator.STYLE_GREEN);
-//        iconFactory.setStyle(IconGenerator.STYLE_GREEN);
 
         for (int i = 0; i < propertyList.size(); i++) {
             Property property = propertyList.get(i);

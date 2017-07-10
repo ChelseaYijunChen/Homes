@@ -9,4 +9,7 @@
     <color name="titleBar">#EAECEE</color>
     <color name="third_text">#aaaaaa</color>
     <color name="fourth_text">#c4c4c4</color>
+    <color name="map_orange">#FF8C00</color>
+    <color name="map_blue">#1E90FF</color>
+    <color name="map_green">#228B22</color>
 </resources>

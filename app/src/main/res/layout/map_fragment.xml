@@ -11,7 +11,46 @@
     <include layout="@layout/map_tool_bar" android:id="@+id/toolbar" />
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/divider1">
 
+        <TextView
+            android:id="@+id/property_cate_one"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/map_orange"
+            android:text="Rent" />
+
+        <View style="@style/Hor_Divider"
+            android:id="@+id/divider2" />
+
+        <TextView
+            android:id="@+id/property_cate_two"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/map_blue"
+            android:text="Mortgage" />
+
+        <View style="@style/Hor_Divider"
+            android:id="@+id/divider3" />
+
+        <TextView
+            android:id="@+id/property_cate_three"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/map_green"
+            android:text="Outright Purchase" />
+
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"

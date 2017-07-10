@@ -1,8 +1,6 @@
 package com.example.yijunchen.homes.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,8 +17,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.yijunchen.homes.R;
-import com.example.yijunchen.homes.activities.MainActivity;
-import com.example.yijunchen.homes.activities.MapsActivity;
 import com.example.yijunchen.homes.adapters.RecycleViewAdapter_SubCategory;
 import com.example.yijunchen.homes.models.Property;
 
@@ -28,7 +24,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
