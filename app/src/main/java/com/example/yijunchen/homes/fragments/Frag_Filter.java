@@ -8,9 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.yijunchen.homes.R;
 
@@ -30,7 +32,6 @@ public class Frag_Filter extends Fragment {
     String pptylocation = "&pptylocation=";
     String pptype = "&pptype=";
     String pcatid = "&pcatid=";
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,8 +39,9 @@ public class Frag_Filter extends Fragment {
         apply_filter = (TextView) view.findViewById(R.id.filter_apply);
         property_type_group = (RadioGroup) view.findViewById(R.id.property_type);
         property_type_name_group = (RadioGroup) view.findViewById(R.id.property_type_name);
-        property_name = (TextInputEditText) view.findViewById(R.id.property_name);
-        property_location = (TextInputEditText) view.findViewById(R.id.property_location);
+        property_name = ( TextInputEditText)  view.findViewById(R.id.property_name);
+        property_location = ( TextInputEditText)  view.findViewById(R.id.property_location);
+       // http://rjtmobile.com/aamir/realestate/realestate_app/search_pro.php? pptyname=OPP&pptylocation=67670&pptype=house&pcatid=1
         property_type_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
@@ -52,7 +54,7 @@ public class Frag_Filter extends Fragment {
                     pcatid += "1";
                 } else if (catid.equals("Outright Purchase")) {
                     pcatid += "2";
-                } else if (catid.equals("Mortgage")) {
+                } else if(catid.equals("Mortgage")) {
                     pcatid += "3";
                 }
             }
@@ -64,33 +66,33 @@ public class Frag_Filter extends Fragment {
                 RadioButton radioButton = (RadioButton) view.findViewById(checkedId);
                 String type_name = radioButton.getText().toString();
                 pptype = "&pptype=";
-                if (type_name.equals("All Type")) {
+                if (type_name.equals( "All Type")) {
                     pptype = "";
-                } else if (type_name.equals("Bar House")) {
+                } else if (type_name.equals( "Bar House")) {
                     pptype += "Bar House";
 
-                } else if (type_name.equals("Food House")) {
-                    pptype += "Bar House";
-                } else if (type_name.equals("House")) {
-                    pptype += "Bar House";
-                } else if (type_name.equals("Dessert House")) {
-                    pptype += "Bar House";
-                } else if (type_name.equals("Mansion")) {
-                    pptype += "Bar House";
-                } else if (type_name.equals("Home")) {
-                    pptype += "Bar House";
-                } else if (type_name.equals("Lake House")) {
-                    pptype += "Bar House";
-                } else if (type_name.equals("Boat House")) {
-                    pptype += "Bar House";
-                } else if (type_name.equals("Party House")) {
-                    pptype += "Bar House";
-                } else if (type_name.equals("Stretch House")) {
-                    pptype += "Bar House";
-                } else if (type_name.equals("White House")) {
-                    pptype += "Bar House";
-                } else if (type_name.equals("Home Theatre")) {
-                    pptype += "Bar House";
+                }else if (type_name.equals( "Food House")) {
+                    pptype += "Food House";
+                }else if (type_name.equals( "House")) {
+                    pptype += "House";
+                }else if (type_name.equals( "Dessert House")) {
+                    pptype += "Dessert House";
+                }else if (type_name.equals( "Mansion")) {
+                    pptype += "Mansion";
+                }else if (type_name.equals( "Home")) {
+                    pptype += "Home";
+                }else if (type_name.equals( "Lake House")) {
+                    pptype += "Lake House";
+                }else if (type_name.equals( "Boat House")) {
+                    pptype += "Boat House";
+                }else if (type_name.equals( "Party House")) {
+                    pptype += "Party House";
+                }else if (type_name.equals( "Stretch House")) {
+                    pptype += "Stretch House";
+                }else if (type_name.equals( "White House")) {
+                    pptype += "White House";
+                }else if (type_name.equals( "Home Theatre")) {
+                    pptype += "Home Theatre";
                 }
             }
         });
@@ -103,7 +105,7 @@ public class Frag_Filter extends Fragment {
                 } else {
                     pptyname += property_name.getText().toString();
                 }
-                System.out.print(pptyname);
+                System.out.print(pptyname );
 
                 if (property_location.getText().equals("")) {
                     pptylocation = "";
@@ -121,6 +123,7 @@ public class Frag_Filter extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.main_fragment_container, filtered_list_frag).commit();
             }
         });
+
         return view;
     }
 }
