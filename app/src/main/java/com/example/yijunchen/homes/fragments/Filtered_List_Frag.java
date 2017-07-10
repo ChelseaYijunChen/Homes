@@ -41,8 +41,6 @@ import java.util.List;
 
 public class Filtered_List_Frag extends Fragment {
     List<Property> propertyList = new ArrayList<Property>();
-    RadioGroup radioGroup;
-    TextView content;
     RequestQueue requestQueue;
     static String URL;
 
@@ -54,33 +52,12 @@ public class Filtered_List_Frag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.list_all_property,container,false);
-        //content = (TextView) view.findViewById(R.id.filteredProperty);
         Bundle bundle = getArguments();
         URL = (String.valueOf(bundle.getString("url")));
         System.out.print(URL);
         Log.d("url", String.valueOf(bundle.getString("url")));
         recyclerView = (RecyclerView) view.findViewById(R.id.all_property_recycleview);
         fetchData();
-
-//        recycleViewAdapter_subCategory.setOnItemClickListener(new RecycleViewAdapter_SubCategory.OnRecyclerViewItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, String data) {
-//                PropertyDetailFragment propertyDetailFragment = new PropertyDetailFragment();
-//                Bundle args = new Bundle();
-//                int position = recyclerView.getChildAdapterPosition(view);
-//                Property property = propertyList.get(position);
-//                args.putParcelable("property",property);
-//                propertyDetailFragment.setArguments(args);
-//
-//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//
-//                transaction.replace(R.id.main_fragment_container, propertyDetailFragment);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-//
-//            }
-//        });
-
 
         return view;
     }
@@ -100,17 +77,14 @@ public class Filtered_List_Frag extends Fragment {
                         if (item.has("PropertyId")) {
                             String temp = item.getString("PropertyId");
                             property.setId(Integer.parseInt(temp));
-
                         }
                         if (item.has("PropertyName")) {
                             String temp = item.getString("PropertyName");
                             property.setName(temp);
-
                         }
                         if (item.has("PropertyDesc")) {
                             String temp = item.getString("PropertyDesc");
                             property.setDescription(temp);
-
                         }
                         if (item.has("PropertyType")) {
                             String temp = item.getString("PropertyType");
@@ -124,9 +98,6 @@ public class Filtered_List_Frag extends Fragment {
                             } else {
                                 property.setCategory(Integer.parseInt(temp));
                             }
-
-
-
                         }
                         if (item.has("PropertyAddress1")) {
                             String temp = item.getString("PropertyAddress1");
@@ -135,95 +106,84 @@ public class Filtered_List_Frag extends Fragment {
                             } else {
                                 property.setAddress1(temp);
                             }
-
-
                         }
-
                         if (item.has("PropertyAddress2")) {
                             String temp = item.getString("PropertyAddress2");
                             property.setAddress2(temp);
-
                         }
                         if (item.has("PropertyZip")) {
                             String temp = item.getString("PropertyZip");
                             property.setZipCode(Integer.parseInt(temp));
-
                         }
                         if (item.has("PropertyLatitute")) {
                             String temp = item.getString("PropertyLatitute");
                             property.setLatitude(Float.parseFloat(temp));
-
                         }
                         if (item.has("PropertyLongtitue")) {
                             String temp = item.getString("PropertyLongtitue");
                             property.setLongitude(Float.parseFloat(temp));
-
                         }
                         if (item.has("PropertyThumb1")) {
                             String temp = item.getString("PropertyThumb1");
                             property.setImgThumb1(temp);
-
                         }
                         if (item.has("PropertyThumb2")) {
                             String temp = item.getString("PropertyThumb2");
                             property.setImgThumb2(temp);
-
                         }
                         if (item.has("PropertyThumb3")) {
                             String temp = item.getString("PropertyThumb3");
                             property.setImgThumb3(temp);
-
                         }
                         if (item.has("PropertyCost")) {
                             String temp = item.getString("PropertyCost");
                             property.setCost(Double.parseDouble(temp));
-
                         }
                         if (item.has("PropertySize")) {
                             String temp = item.getString("PropertySize");
                             property.setSize(Integer.parseInt(temp));
-
                         }
                         if (item.has("PropertyStatus")) {
                             String temp = item.getString("PropertyStatus");
                             property.setStatus(temp);
-
                         }
                         if (item.has("PropertyUpdate")) {
                             String temp = item.getString("PropertyUpdate");
                             property.setUpdate(temp);
-
                         }
                         if (item.has("PropertySellerID")) {
                             String temp = item.getString("PropertySellerID");
                             property.setSellerId(Integer.parseInt(temp));
-
                         }
-                        Toast.makeText(getContext(),property.toString(), Toast.LENGTH_SHORT).show();
                         propertyList.add(property);
                     }
-                    //                   mRecyclerView.setAdapter(new SubCategoryAdapter(getActivity(), mList));
-                    //                  mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-/*
-
-
-                    RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
-                    mRecyclerView.setLayoutManager(mLayoutManager);
-                    mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
-                    mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                    mRecyclerView.setAdapter(new FragHomeAdapterTest(getActivity(), mList));
-  */
-
                     if(propertyList.size()==0){
                         Toast.makeText(getActivity(),"there is no results", Toast.LENGTH_LONG).show();
                     } else {
                         Log.d("filter list ==", propertyList.size()+" ");
                         recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList,getContext());
+                        recycleViewAdapter_subCategory.notifyDataSetChanged();
                         recyclerView.setAdapter(recycleViewAdapter_subCategory);
                         recyclerViewlayoutManager = new LinearLayoutManager(getContext());
                         recyclerView.setLayoutManager(recyclerViewlayoutManager);
                         recyclerView.setHasFixedSize(true);
+                        recycleViewAdapter_subCategory.setOnItemClickListener(new RecycleViewAdapter_SubCategory.OnRecyclerViewItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, String data) {
+                                PropertyDetailFragment propertyDetailFragment = new PropertyDetailFragment();
+                                Bundle args = new Bundle();
+                                int position = recyclerView.getChildAdapterPosition(view);
+                                Property property = propertyList.get(position);
+                                args.putParcelable("property",property);
+                                propertyDetailFragment.setArguments(args);
+
+                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                                transaction.replace(R.id.main_fragment_container, propertyDetailFragment);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+                            }
+                        });
                     }
 
                 } catch (JSONException e) {
