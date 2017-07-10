@@ -124,6 +124,8 @@ public class Frag_Filter extends Fragment {
             }
         });
 
+
+
         return view;
     }
 }
