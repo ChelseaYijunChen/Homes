@@ -30,6 +30,7 @@ public class Property implements Serializable, Parcelable{
     private int sellerId;
 
     public Property() {
+
     }
 
     public Property(int id, String name, String description, String type, int category, String address1, String address2, int zipCode, float latitude, float longitude, String imgThumb1, String imgThumb2, String imgThumb3, double cost, int size, String status, String update, int sellerId) {

@@ -72,27 +72,27 @@ public class Frag_Filter extends Fragment {
                     pptype += "Bar House";
 
                 }else if (type_name.equals( "Food House")) {
-                    pptype += "Bar House";
+                    pptype += "Food House";
                 }else if (type_name.equals( "House")) {
-                    pptype += "Bar House";
+                    pptype += "House";
                 }else if (type_name.equals( "Dessert House")) {
-                    pptype += "Bar House";
+                    pptype += "Dessert House";
                 }else if (type_name.equals( "Mansion")) {
-                    pptype += "Bar House";
+                    pptype += "Mansion";
                 }else if (type_name.equals( "Home")) {
-                    pptype += "Bar House";
+                    pptype += "Home";
                 }else if (type_name.equals( "Lake House")) {
-                    pptype += "Bar House";
+                    pptype += "Lake House";
                 }else if (type_name.equals( "Boat House")) {
-                    pptype += "Bar House";
+                    pptype += "Boat House";
                 }else if (type_name.equals( "Party House")) {
-                    pptype += "Bar House";
+                    pptype += "Party House";
                 }else if (type_name.equals( "Stretch House")) {
-                    pptype += "Bar House";
+                    pptype += "Stretch House";
                 }else if (type_name.equals( "White House")) {
-                    pptype += "Bar House";
+                    pptype += "White House";
                 }else if (type_name.equals( "Home Theatre")) {
-                    pptype += "Bar House";
+                    pptype += "Home Theatre";
                 }
             }
         });

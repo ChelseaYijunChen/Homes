@@ -119,12 +119,23 @@ public class Filtered_List_Frag extends Fragment {
                         }
                         if (item.has("PropertyCategory")) {
                             String temp = item.getString("PropertyCategory");
-                            property.setCategory(2);
+                            if (temp.equals("null")) {
+                                property.setCategory(0);
+                            } else {
+                                property.setCategory(Integer.parseInt(temp));
+                            }
+
+
 
                         }
                         if (item.has("PropertyAddress1")) {
                             String temp = item.getString("PropertyAddress1");
-                            property.setAddress1(temp);
+                            if (temp.equals("null")) {
+                                property.setAddress1("");
+                            } else {
+                                property.setAddress1(temp);
+                            }
+
 
                         }
 
