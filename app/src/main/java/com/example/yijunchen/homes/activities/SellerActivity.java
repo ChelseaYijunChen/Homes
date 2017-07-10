@@ -11,7 +11,6 @@ import com.example.yijunchen.homes.R;
 import com.example.yijunchen.homes.fragments.AddPropertyFragment;
 import com.example.yijunchen.homes.fragments.AllPropertyFragment;
 import com.example.yijunchen.homes.fragments.CategoryTabFragment;
-import com.example.yijunchen.homes.fragments.Frag_Category;
 import com.example.yijunchen.homes.fragments.MapFragment;
 import com.example.yijunchen.homes.fragments.SellerAccountFragment;
 
@@ -23,8 +22,6 @@ public class SellerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller);
         final AllPropertyFragment allPropertyFragment = new AllPropertyFragment();
-
-        final Frag_Category frag_category = new Frag_Category();
 
         final MapFragment mapFragment = new MapFragment();
 
