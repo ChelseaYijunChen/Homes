@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yijunchen.homes.fragments.MyMapFragment" >
-    <include layout="@layout/toolbar_search_layout" android:id="@+id/titlebar"/>
-    <fragment
+    tools:context="com.example.yijunchen.homes.fragments.MyMapFragment"
+    android:orientation="vertical">
+    <!--<include layout="@layout/toolbar_search_layout" android:id="@+id/titlebar"/>-->
+
+    <include layout="@layout/map_tool_bar" />
+
+
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:id="@+id/map"
-        android:layout_marginTop="52dp"/>
+        android:layout_height="match_parent">
 
-    <android.support.v7.widget.FitWindowsFrameLayout
-        android:id="@+id/short_view"
-        android:name="com.example.yijunchen.homes.fragments.ShortViewOfPropertyFragment"
-        android:layout_width="match_parent"
-        android:layout_gravity="bottom"
-        android:layout_height="200dp" />
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:id="@+id/map" />
 
-    <!--tools:layout="@layout/short_view_of_property"-->
+        <android.support.v7.widget.FitWindowsFrameLayout
+            android:id="@+id/short_view"
+            android:name="com.example.yijunchen.homes.fragments.ShortViewOfPropertyFragment"
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_height="200dp" />
 
-</FrameLayout>
+    </FrameLayout>
+
+</LinearLayout>

@@ -72,7 +72,7 @@ public class AllPropertyFragment extends Fragment{
             JSON_DATA_WEB_CALL();
         }
         View v = inflater.inflate(R.layout.list_all_property,container,false);
-        recyclerView = (RecyclerView) v.findViewById(R.id.all_property_recycleview);
+        //recyclerView = (RecyclerView) v.findViewById(R.id.all_property_recycleview);
         recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList,getContext());
         recycleViewAdapter_subCategory.setOnItemClickListener(new RecycleViewAdapter_SubCategory.OnRecyclerViewItemClickListener() {
             @Override

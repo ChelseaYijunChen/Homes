@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yijunchen.homes.activities.MainActivity">
+    tools:context="com.example.yijunchen.homes.activities.SellerActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_navigation"
-        android:id="@+id/main_fragment_container"
-        android:layout_below="@+id/include">
+        android:id="@+id/main_fragment_container">
 
     </FrameLayout>
 
@@ -20,5 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/menu_bottom_navigation" />
+        app:menu="@menu/menu_bottom_navigation_seller" />
+
 </RelativeLayout>

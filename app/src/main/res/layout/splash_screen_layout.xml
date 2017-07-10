@@ -3,10 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background2"
+    android:background="@drawable/house30"
    >
-
-
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -18,20 +16,44 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <Button
+        <!--<Button-->
+            <!--android:id="@+id/browsing"-->
+            <!--android:layout_width="250dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:text="I'm just browsing" />-->
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/browsing"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="I'm just browsing" />
+            android:layout_margin="12dp"
+            android:text="I'm just browsing"
+            android:alpha="0.8"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true" />
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/seller"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_margin="12dp"
             android:text="I'm a real estate agent"
+            android:alpha="0.8"
+            app:bootstrapBrand="secondary"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true" />
 
-            />
+        <!--<Button-->
+            <!--android:id="@+id/seller"-->
+            <!--android:layout_width="250dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="I'm a real estate agent" />-->
     </LinearLayout>
 
 </RelativeLayout>

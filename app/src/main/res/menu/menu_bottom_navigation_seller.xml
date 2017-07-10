@@ -15,12 +15,12 @@
         android:icon="@drawable/search2"
         app:showAsAction="ifRoom" />
 
-    <!--<item-->
-        <!--android:id="@+id/action_save"-->
-        <!--android:enabled="true"-->
-        <!--android:title="Saves"-->
-        <!--android:icon="@drawable/save3"-->
-        <!--app:showAsAction="ifRoom" />-->
+    <item
+        android:id="@+id/action_my_account"
+        android:enabled="true"
+        android:title="My Account"
+        android:icon="@drawable/user3"
+        app:showAsAction="ifRoom" />
 
 
 </menu>

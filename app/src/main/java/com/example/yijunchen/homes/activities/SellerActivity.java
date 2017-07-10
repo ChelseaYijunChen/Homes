@@ -5,7 +5,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.yijunchen.homes.R;
@@ -13,15 +12,15 @@ import com.example.yijunchen.homes.fragments.AddPropertyFragment;
 import com.example.yijunchen.homes.fragments.AllPropertyFragment;
 import com.example.yijunchen.homes.fragments.Frag_Category;
 import com.example.yijunchen.homes.fragments.MyMapFragment;
+import com.example.yijunchen.homes.fragments.SellerAccountFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class SellerActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_seller);
         final AllPropertyFragment allPropertyFragment = new AllPropertyFragment();
 
         final Frag_Category frag_category = new Frag_Category();
@@ -29,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         final MyMapFragment myMapFragment = new MyMapFragment();
 
         final AddPropertyFragment addPropertyFragment = new AddPropertyFragment();
+
+        final SellerAccountFragment sellerAccountFragment = new SellerAccountFragment();
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_fragment_container, frag_category).commit();
@@ -45,14 +46,13 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_search:
                         fragment = myMapFragment;
                         break;
-//                    case R.id.action_save:
-//                        fragment = addPropertyFragment;
-//                        break;
+                    case R.id.action_my_account:
+                        fragment = sellerAccountFragment;
+                        break;
                 }
                 if(fragment == null){
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_fragment_container, frag_category).commit();
-                           // .replace(R.id.main_fragment_container, allPropertyFragment).commit();
                 } else{
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_fragment_container, fragment).commit();
@@ -60,6 +60,5 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 }

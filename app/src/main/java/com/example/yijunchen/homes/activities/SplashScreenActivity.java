@@ -9,13 +9,15 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.example.yijunchen.homes.R;
 
 public class SplashScreenActivity extends Activity implements Animation.AnimationListener{
     private int splashInterval = 3000;
     ImageView light1, light2;
-    Button seller;
-    Button buyer;
+//    Button seller;
+//    Button buyer;
+    BootstrapButton seller, buyer;
     Animation animation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +25,15 @@ public class SplashScreenActivity extends Activity implements Animation.Animatio
         setContentView(R.layout.splash_screen_layout);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation);
         animation.setAnimationListener(this);
-        seller = (Button) findViewById(R.id.seller);
-        buyer = (Button) findViewById(R.id.browsing);
+        seller = (BootstrapButton) findViewById(R.id.seller);
+        buyer = (BootstrapButton) findViewById(R.id.browsing);
       //  light1.startAnimation(animation);
        // light2.startAnimation(animation);
         seller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(SplashScreenActivity.this, SellerActivity.class);
+                startActivity(intent);
             }
         });
         buyer.setOnClickListener(new View.OnClickListener(){
@@ -40,8 +43,6 @@ public class SplashScreenActivity extends Activity implements Animation.Animatio
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override

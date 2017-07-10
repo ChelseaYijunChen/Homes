@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Property"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_margin="20dp"
+            android:gravity="center"/>
+
+
+        <EditText
+            android:id="@+id/add_property_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/title"
+            android:hint="Property Name" />
+
+        <EditText
+            android:id="@+id/add_property_cate"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/add_property_name"
+            android:hint="Category"
+            android:layout_toLeftOf="@+id/add_property_type"
+            android:layout_toStartOf="@+id/add_property_type" />
+
+        <EditText
+            android:id="@+id/add_property_type"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Type"
+            android:layout_alignBaseline="@+id/add_property_cate"
+            android:layout_alignBottom="@+id/add_property_cate"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
+        <EditText
+            android:id="@+id/add_property_cost"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/add_property_type"
+            android:hint="Cost"
+            android:layout_toLeftOf="@+id/add_property_size"
+            android:layout_toStartOf="@+id/add_property_size" />
+
+        <EditText
+            android:id="@+id/add_property_size"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Size"
+            android:layout_alignBaseline="@+id/add_property_cost"
+            android:layout_alignBottom="@+id/add_property_cost"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:id="@+id/add_property_address1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/add_property_cost"
+            android:hint="Address Line 1" />
+
+        <EditText
+            android:id="@+id/add_property_address2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/add_property_address1"
+            android:hint="Address Line2" />
+
+        <EditText
+            android:id="@+id/add_property_zip"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:hint="Zip"
+            android:layout_below="@+id/add_property_address2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+
+        <EditText
+            android:id="@+id/add_property_lat"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/add_property_zip"
+            android:layout_alignBottom="@+id/add_property_zip"
+            android:layout_toEndOf="@+id/add_property_zip"
+            android:layout_toRightOf="@+id/add_property_zip"
+            android:hint="Latitude" />
+
+        <EditText
+            android:id="@+id/add_property_long"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/add_property_lat"
+            android:layout_alignTop="@+id/add_property_lat"
+            android:layout_toEndOf="@+id/add_property_lat"
+            android:layout_toRightOf="@+id/add_property_lat"
+            android:hint="Longitude" />
+
+
+        <EditText
+            android:id="@+id/add_property_des"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/add_property_lat"
+            android:hint="Description" />
+
+
+        <ImageView
+            android:id="@+id/add_property_img1"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            app:srcCompat="@drawable/house1"
+            android:layout_below="@id/add_property_des"/>
+
+        <Button
+            android:id="@+id/add_property_img1_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Photo from gallery"
+            android:layout_above="@+id/add_property_img2"
+            android:layout_toRightOf="@+id/add_property_img1"
+            android:layout_toEndOf="@+id/add_property_img1" />
+
+        <View style="@style/Big_Divider"
+            android:id="@+id/divider1"
+            android:layout_below="@+id/add_property_img1"/>
+
+        <ImageView
+            android:id="@+id/add_property_img2"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            app:srcCompat="@drawable/house2"
+            android:layout_below="@id/divider1"/>
+
+        <Button
+            android:id="@+id/add_property_img2_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Photo from gallery"
+            android:layout_alignBottom="@+id/divider2"
+            android:layout_toRightOf="@+id/add_property_img2"
+            android:layout_toEndOf="@+id/add_property_img2" />
+
+        <View style="@style/Big_Divider"
+            android:id="@+id/divider2"
+            android:layout_below="@+id/add_property_img2"/>
+
+
+        <ImageView
+            android:id="@+id/add_property_img3"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            app:srcCompat="@drawable/house14"
+            android:layout_below="@id/divider2"/>
+
+        <Button
+            android:id="@+id/add_property_img3_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Photo from gallery"
+            android:layout_above="@+id/schedule_tour_button"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/add_property_img3"
+            android:layout_toEndOf="@+id/add_property_img3" />
+
+        <View style="@style/Big_Divider"
+            android:id="@+id/divider3"
+            android:layout_below="@+id/add_property_img3"/>
+
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/schedule_tour_button"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider3"
+            android:layout_margin="16dp"
+            android:text="Post your Property"
+            android:gravity="center"
+            app:bootstrapBrand="warning"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+</ScrollView>
