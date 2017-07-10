@@ -2,20 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yijunchen.homes.fragments.MapFragment"
     android:orientation="vertical"
-    android:id="@+id/container">
-    <!--<include layout="@layout/toolbar_search_layout" android:id="@+id/titlebar"/>-->
-    <include layout="@layout/map_tool_bar" android:id="@+id/map_toolbar" />
+    tools:context="com.example.yijunchen.homes.fragments.MapFragment">
 
+    <include
+        android:id="@+id/map_toolbar"
+        layout="@layout/map_tool_bar" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_below="@+id/divider1">
+        android:layout_below="@+id/divider1"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/property_cate_one"
@@ -23,11 +24,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/map_orange"
-            android:text="Rent" />
+            android:text="Rent"
+            android:textColor="@color/map_orange" />
 
-        <View style="@style/Hor_Divider"
-            android:id="@+id/divider2" />
+        <View
+            android:id="@+id/divider2"
+            style="@style/Hor_Divider" />
 
         <TextView
             android:id="@+id/property_cate_two"
@@ -35,11 +37,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/map_blue"
-            android:text="Mortgage" />
+            android:text="Mortgage"
+            android:textColor="@color/map_blue" />
 
-        <View style="@style/Hor_Divider"
-            android:id="@+id/divider3" />
+        <View
+            android:id="@+id/divider3"
+            style="@style/Hor_Divider" />
 
         <TextView
             android:id="@+id/property_cate_three"
@@ -47,31 +50,27 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/map_green"
-            android:text="Outright Purchase" />
+            android:text="Outright Purchase"
+            android:textColor="@color/map_green" />
 
     </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-       >
-
+        android:layout_height="match_parent">
 
         <fragment
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:id="@+id/map" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <android.support.v7.widget.FitWindowsFrameLayout
             android:id="@+id/short_view"
             android:name="com.example.yijunchen.homes.fragments.ShortViewOfPropertyFragment"
             android:layout_width="match_parent"
-            android:layout_gravity="bottom"
-            android:layout_height="200dp" />
+            android:layout_height="200dp"
+            android:layout_gravity="bottom" />
 
-    <!--tools:layout="@layout/short_view_of_property"-->
-
-</FrameLayout>
-    </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

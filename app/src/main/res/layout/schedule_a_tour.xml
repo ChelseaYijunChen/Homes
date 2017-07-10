@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="22sp"
-        android:gravity="center"
         android:layout_margin="16dp"
-        android:text="Request A Private Tour" />
+        android:gravity="center"
+        android:text="Request A Private Tour"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/request_name"
@@ -22,8 +22,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:background="#4Dffffff"
-        android:padding="10dp"
-        android:hint="Your Full Name" />
+        android:hint="Your Full Name"
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/request_email"
@@ -32,8 +32,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:background="#4Dffffff"
-        android:padding="10dp"
-        android:hint="Your Email Address" />
+        android:hint="Your Email Address"
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/request_phone"
@@ -42,8 +42,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:background="#4Dffffff"
-        android:padding="10dp"
-        android:hint="Your Phone Number "/>
+        android:hint="Your Phone Number "
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/request_body"
@@ -60,14 +60,13 @@ I'd like schedule a tour." />
         android:id="@+id/schedule_tour_button"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:text="Send Message"
         android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="Send Message"
         app:bootstrapBrand="warning"
         app:bootstrapSize="lg"
         app:buttonMode="regular"
-        app:showOutline="false"
         app:roundedCorners="true"
-        android:layout_marginTop="16dp"/>
-
+        app:showOutline="false" />
 
 </LinearLayout>

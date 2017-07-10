@@ -1,79 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_titlebar"
     android:layout_width="match_parent"
     android:layout_height="52dp"
     android:background="@color/titleBar">
+
     <Button
+        android:id="@+id/list_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="List"
-        android:id="@+id/list_map"
-        android:background="@color/titleBar"
-
-        android:textColor="@color/secondary_text"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
-
+        android:layout_alignParentTop="true"
+        android:background="@color/titleBar"
+        android:text="List"
+        android:textColor="@color/secondary_text" />
 
     <RelativeLayout
+        android:id="@+id/search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/list_map"
         android:layout_toLeftOf="@+id/filter"
-        android:id="@+id/search"
+        android:layout_toRightOf="@+id/list_map"
         android:background="@color/titleBar">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/search"
-            android:id="@+id/search_icon"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-        <EditText android:id="@+id/search_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Custom Search"
 
+        <ImageView
+            android:id="@+id/search_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/search" />
+
+        <EditText
+            android:id="@+id/search_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+
+            android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/clear_search"
             android:layout_toRightOf="@+id/search_icon"
 
-            android:layout_alignParentTop="true" />
+            android:hint="Custom Search" />
+
         <ImageButton
+            android:id="@+id/clear_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/close"
-            android:background="@color/titleBar"
-            android:id="@+id/clear_search"
-
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/search_icon" />
 
-
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/search_icon"
+            android:background="@color/titleBar"
+            android:src="@drawable/close" />
 
     </RelativeLayout>
 
-
-
-
     <Button
         android:id="@+id/filter"
-        android:background="@color/titleBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filter"
-        android:textColor="@color/secondary_text"
-
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/titleBar"
+        android:text="Filter"
+        android:textColor="@color/secondary_text" />
 
 </RelativeLayout>

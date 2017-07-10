@@ -21,6 +21,4 @@
         android:title="My Account"
         android:icon="@drawable/user3"
         app:showAsAction="ifRoom" />
-
-
 </menu>

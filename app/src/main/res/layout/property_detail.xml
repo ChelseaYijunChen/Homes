@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -17,9 +15,9 @@
             android:layout_marginBottom="10dp">
 
             <RelativeLayout
+                android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/relativeLayout">
+                android:layout_height="wrap_content">
 
                 <com.daimajia.slider.library.SliderLayout
                     android:id="@+id/property_detail_slider"
@@ -30,70 +28,72 @@
                     android:id="@+id/share_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="12dp"
-                    app:srcCompat="@drawable/share6"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
                     android:layout_marginEnd="12dp"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="12dp"
+                    app:srcCompat="@drawable/share6" />
 
                 <TextView
                     android:id="@+id/property_detail_price"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/property_detail_slider"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
                     android:text="TextView"
                     android:textSize="22sp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/property_detail_slider"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/property_detail_address"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:textSize="18sp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginLeft="8dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/property_detail_price"
-                    android:text="TextView" />
-
-                <View style="@style/Big_Divider"
-                    android:id="@+id/divider1"
-                    android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_below="@+id/property_detail_address"/>
+                    android:layout_marginRight="8dp"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <View
+                    android:id="@+id/divider1"
+                    style="@style/Big_Divider"
+                    android:layout_below="@+id/property_detail_address"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:orientation="horizontal"
-                    android:layout_below="@+id/divider1">
+                    android:layout_below="@+id/divider1"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/property_detail_bed"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:drawableLeft="@drawable/bed2"
+                        android:gravity="center"
                         android:text="2
 Beds" />
 
-                    <View style="@style/Hor_Divider"
-                        android:id="@+id/divider2" />
+                    <View
+                        android:id="@+id/divider2"
+                        style="@style/Hor_Divider" />
 
                     <TextView
                         android:id="@+id/property_detail_bath"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:drawableLeft="@drawable/bath3"
+                        android:gravity="center"
                         android:text="2
 Baths" />
 
@@ -108,24 +108,24 @@ Baths" />
             android:id="@+id/card_view_hour_info1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_below="@+id/card_view_hour_basic">
+            android:layout_below="@+id/card_view_hour_basic"
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
+                android:id="@+id/house_info1"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:orientation="vertical"
-                android:id="@+id/house_info1"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/open_hour_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:text="Open Houses"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:text="Open Houses" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -138,27 +138,14 @@ Baths" />
                     android:id="@+id/schedule_tour_button"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:text="Schedule a Private Tour"
                     android:layout_gravity="center"
+                    android:text="Schedule a Private Tour"
                     app:bootstrapBrand="warning"
                     app:bootstrapSize="lg"
                     app:buttonMode="regular"
-                    app:showOutline="true"
-                    app:roundedCorners="true" />
+                    app:roundedCorners="true"
+                    app:showOutline="true" />
 
-                <!--<TextView-->
-                <!--android:id="@+id/textView8"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="TextView" />-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/textView9"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="TextView" />-->
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
@@ -167,20 +154,20 @@ Baths" />
             android:id="@+id/card_view_hour_info2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_below="@id/card_view_hour_info1">
+            android:layout_below="@id/card_view_hour_info1"
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
+                android:id="@+id/house_info2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/house_info2"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/overview"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/overview"
                     android:layout_below="@+id/house_info1"
                     android:orientation="vertical">
 
@@ -189,9 +176,9 @@ Baths" />
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
+                        android:text="OVERVIEW"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:text="OVERVIEW" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/property_detail_des"
@@ -220,8 +207,8 @@ Baths" />
                         android:layout_height="25dp"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:textStyle="bold"
-                        android:text="NM2289" />
+                        android:text="NM2289"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -243,8 +230,8 @@ Baths" />
                         android:layout_height="25dp"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:textStyle="bold"
-                        android:text="June 28 2017" />
+                        android:text="June 28 2017"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -266,8 +253,8 @@ Baths" />
                         android:layout_height="25dp"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:textStyle="bold"
-                        android:text="200ft" />
+                        android:text="200ft"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -290,42 +277,15 @@ Baths" />
                         android:layout_height="25dp"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:textStyle="bold"
-                        android:text="Yijun Chen" />
+                        android:text="Yijun Chen"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="25dp"-->
-                    <!--android:layout_margin="3dp"-->
-                    <!--android:orientation="horizontal">-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/property_detail_sellerId_title"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="25dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:text="Seller ID" />-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/property_detail_sellerId"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="25dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="right"-->
-                        <!--android:textStyle="bold"-->
-                        <!--android:text="Yijun Chen" />-->
-
-                <!--</LinearLayout>-->
-
-
             </LinearLayout>
 
-
-
         </android.support.v7.widget.CardView>
-        
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="165dp"
@@ -343,9 +303,9 @@ Baths" />
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:text="Nearby Schools"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:text="Nearby Schools" />
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:id="@+id/school1"
@@ -393,7 +353,6 @@ Baths" />
 
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:id="@+id/school3"
                     android:layout_width="match_parent"
@@ -419,15 +378,8 @@ Baths" />
 
             </LinearLayout>
 
-
         </android.support.v7.widget.CardView>
-        
-
 
     </RelativeLayout>
-
-
-
-
 
 </ScrollView>

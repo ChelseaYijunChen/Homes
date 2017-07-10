@@ -1,166 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFFFF"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-   <include layout="@layout/toolbar_filter_layout"/>
-
-<ScrollView
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_filter_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/property_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/btnAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="All" />
+
+                <RadioButton
+                    android:id="@+id/btnRent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rent" />
+
+                <RadioButton
+                    android:id="@+id/btnPurchase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Outright Purchase" />
+
+                <RadioButton
+                    android:id="@+id/btnMortgage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mortgage" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Property Name" />
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/property_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Property Location (Zip Code)" />
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/property_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Property Type" />
+
+            <RadioGroup
+                android:id="@+id/property_type_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/btnAllType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="All Type" />
+
+                <RadioButton
+                    android:id="@+id/btnBarHouse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bar House" />
+
+                <RadioButton
+                    android:id="@+id/btnFoodHouse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Food House" />
+
+                <RadioButton
+                    android:id="@+id/btnHouse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="House" />
+
+                <RadioButton
+                    android:id="@+id/btnDessertHouse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dessert House" />
+
+                <RadioButton
+                    android:id="@+id/btnMansion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mansion" />
+
+                <RadioButton
+                    android:id="@+id/btnHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Home" />
+
+                <RadioButton
+                    android:id="@+id/btnLakeHouse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lake House" />
+
+                <RadioButton
+                    android:id="@+id/btnBoatHouse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Boat House" />
 
 
-   <RadioGroup
-       android:id="@+id/property_type"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:orientation="horizontal"
-       android:layout_gravity="center">
-      <RadioButton
-          android:id="@+id/btnAll"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="All"
-          android:checked="true"/>
-      <RadioButton
-          android:id="@+id/btnRent"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Rent"
-          />
+                <RadioButton
+                    android:id="@+id/btnPartyHous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Party House" />
 
-      <RadioButton
-          android:id="@+id/btnPurchase"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Outright Purchase"/>
-      <RadioButton
-          android:id="@+id/btnMortgage"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Mortgage"/>
+                <RadioButton
+                    android:id="@+id/btnStretchHouse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stretch House" />
 
-   </RadioGroup>
+                <RadioButton
+                    android:id="@+id/btnWhiteHouse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="White House" />
 
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Property Name"
-       />
-   <android.support.design.widget.TextInputEditText
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:id="@+id/property_name"
-      />
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Property Location (Zip Code)"
-       />
-   <android.support.design.widget.TextInputEditText
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:id="@+id/property_location"
-       />
-
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Property Type"/>
-
-
-
-   <RadioGroup
-       android:id="@+id/property_type_name"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:orientation="vertical">
-      <RadioButton
-          android:id="@+id/btnAllType"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="All Type"
-          android:checked="true"/>
-      <RadioButton
-          android:id="@+id/btnBarHouse"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Bar House"
-         />
-
-      <RadioButton
-          android:id="@+id/btnFoodHouse"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Food House"/>
-      <RadioButton
-          android:id="@+id/btnHouse"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="House"/>
-      <RadioButton
-          android:id="@+id/btnDessertHouse"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Dessert House"/>
-
-      <RadioButton
-          android:id="@+id/btnMansion"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Mansion"
-         />
-
-      <RadioButton
-          android:id="@+id/btnHome"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Home"/>
-      <RadioButton
-          android:id="@+id/btnLakeHouse"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Lake House"/>
-      <RadioButton
-          android:id="@+id/btnBoatHouse"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Boat House"/>
-
-
-      <RadioButton
-          android:id="@+id/btnPartyHous"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Party House"
-          />
-
-      <RadioButton
-          android:id="@+id/btnStretchHouse"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Stretch House"/>
-      <RadioButton
-          android:id="@+id/btnWhiteHouse"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="White House"/>
-      <RadioButton
-          android:id="@+id/btnHomeTheatre"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Home Theatre"/>
-
-
-
-   </RadioGroup>
-   </LinearLayout>
-</ScrollView>
+                <RadioButton
+                    android:id="@+id/btnHomeTheatre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Home Theatre" />
+                
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
 
 

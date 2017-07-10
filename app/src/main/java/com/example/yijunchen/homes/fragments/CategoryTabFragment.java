@@ -18,7 +18,7 @@ import com.example.yijunchen.homes.adapters.CategoryPagerAdapter;
  * Created by yijunchen on 7/9/17.
  */
 
-public class CategoryTabFragment extends Fragment implements TabLayout.OnTabSelectedListener{
+public class CategoryTabFragment extends Fragment implements TabLayout.OnTabSelectedListener {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -41,7 +41,7 @@ public class CategoryTabFragment extends Fragment implements TabLayout.OnTabSele
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.category_tablayout,container,false);
+        View v = inflater.inflate(R.layout.category_tablayout, container, false);
 
         tabLayout = (TabLayout) v.findViewById(R.id.category_tablayout);
 

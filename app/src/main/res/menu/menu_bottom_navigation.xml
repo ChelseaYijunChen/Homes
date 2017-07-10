@@ -4,23 +4,14 @@
     <item
         android:id="@+id/action_homepage"
         android:enabled="true"
-        android:title="Home"
         android:icon="@drawable/icon_homepage"
+        android:title="Home"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_search"
         android:enabled="true"
-        android:title="Search"
         android:icon="@drawable/search2"
+        android:title="Search"
         app:showAsAction="ifRoom" />
-
-    <!--<item-->
-        <!--android:id="@+id/action_save"-->
-        <!--android:enabled="true"-->
-        <!--android:title="Saves"-->
-        <!--android:icon="@drawable/save3"-->
-        <!--app:showAsAction="ifRoom" />-->
-
-
 </menu>

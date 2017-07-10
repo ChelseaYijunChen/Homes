@@ -25,7 +25,6 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.yijunchen.homes.R;
 import com.example.yijunchen.homes.adapters.RecycleViewAdapter_SubCategory;
-import com.example.yijunchen.homes.helperClasses.GetAllProperties;
 import com.example.yijunchen.homes.models.Property;
 
 import org.json.JSONArray;
@@ -40,7 +39,7 @@ import java.util.List;
  * Created by yijunchen on 7/9/17.
  */
 
-public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     private SliderLayout mDemoSlider;
     private static Bundle mBundleRecyclerviewState;
     private final String keyRecyclerviewState = "recycler_state";
@@ -54,25 +53,25 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
     String JSON_PROPERTY_NAME = "PropertyName";
     String JSON_PROPERTY_DESC = "PropertyDesc";
     String JSON_PROPERTY_TYPE = "PropertyType";
-    String JSON_PROPERTY_CATEGORY ="PropertyCategory";
-    String JSON_PROPERTY_ADDRESS1 ="PropertyAddress1";
-    String JSON_PROPERTY_ADDRESS2 ="PropertyAddress2";
-    String JSON_PROPERTY_ZIP ="PropertyZip";
-    String JSON_PROPERTY_LATITUDE ="PropertyLatitute";
-    String JSON_PROPERTY_LONGITUDE ="PropertyLongtitue";
-    String JSON_PROPERTY_THUMB1 ="PropertyThumb1";
-    String JSON_PROPERTY_THUMB2 ="PropertyThumb2";
-    String JSON_PROPERTY_THUMB3 ="PropertyThumb3";
-    String JSON_PROPERTY_COST ="PropertyCost";
-    String JSON_PROPERTY_SIZE ="PropertySize";
-    String JSON_PROPERTY_STATUS ="PropertyStatus";
-    String JSON_PROPERTY_UPDATE ="PropertyUpdate";
-    String JSON_PROPERTY_SELLER_ID ="PropertySellerID";
+    String JSON_PROPERTY_CATEGORY = "PropertyCategory";
+    String JSON_PROPERTY_ADDRESS1 = "PropertyAddress1";
+    String JSON_PROPERTY_ADDRESS2 = "PropertyAddress2";
+    String JSON_PROPERTY_ZIP = "PropertyZip";
+    String JSON_PROPERTY_LATITUDE = "PropertyLatitute";
+    String JSON_PROPERTY_LONGITUDE = "PropertyLongtitue";
+    String JSON_PROPERTY_THUMB1 = "PropertyThumb1";
+    String JSON_PROPERTY_THUMB2 = "PropertyThumb2";
+    String JSON_PROPERTY_THUMB3 = "PropertyThumb3";
+    String JSON_PROPERTY_COST = "PropertyCost";
+    String JSON_PROPERTY_SIZE = "PropertySize";
+    String JSON_PROPERTY_STATUS = "PropertyStatus";
+    String JSON_PROPERTY_UPDATE = "PropertyUpdate";
+    String JSON_PROPERTY_SELLER_ID = "PropertySellerID";
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager recyclerViewlayoutManager = new LinearLayoutManager(getContext());
     RecycleViewAdapter_SubCategory recycleViewAdapter_subCategory;
-    RequestQueue requestQueue ;
+    RequestQueue requestQueue;
 
 
     @Nullable
@@ -89,7 +88,7 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
         }
         View v = inflater.inflate(R.layout.category_one, container, false);
 
-        mDemoSlider = (SliderLayout)v.findViewById(R.id.rent_slider);
+        mDemoSlider = (SliderLayout) v.findViewById(R.id.rent_slider);
         showSlider(mDemoSlider);
 
 //        Log.d("######rent list", propertyList.size()+" ");
@@ -101,16 +100,16 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
 //            Log.d("rent list", rentPropertyList.size()+" ");
 //        }
         recyclerView = (RecyclerView) v.findViewById(R.id.rent_all_property_recycleview);
-        recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList,getContext());
+        recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList, getContext());
         recycleViewAdapter_subCategory.setOnItemClickListener(new RecycleViewAdapter_SubCategory.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, String data) {
-                Toast.makeText(getActivity(),recyclerView.getChildAdapterPosition(view)+"", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), recyclerView.getChildAdapterPosition(view) + "", Toast.LENGTH_LONG).show();
                 PropertyDetailFragment propertyDetailFragment = new PropertyDetailFragment();
                 Bundle args = new Bundle();
                 int position = recyclerView.getChildAdapterPosition(view);
                 Property property = propertyList.get(position);
-                args.putParcelable("property",property);
+                args.putParcelable("property", property);
                 propertyDetailFragment.setArguments(args);
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -122,13 +121,13 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
             }
         });
         recyclerView.setAdapter(recycleViewAdapter_subCategory);
-        //recyclerViewlayoutManager = new LinearLayoutManager(getContext());
+        recyclerViewlayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(recyclerViewlayoutManager);
         recyclerView.setHasFixedSize(true);
 
         return v;
     }
-   // Save recyclerview data
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -147,14 +146,14 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
         Log.d(TAG, "restore called");
     }
 
-    public void showSlider(SliderLayout sliderLayout){
-        HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("$2,190,000",R.drawable.house14);
-        file_maps.put("$3,190,000",R.drawable.house2);
-        file_maps.put("$898,000",R.drawable.house1);
+    public void showSlider(SliderLayout sliderLayout) {
+        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
+        file_maps.put("$2,190,000", R.drawable.house14);
+        file_maps.put("$3,190,000", R.drawable.house2);
+        file_maps.put("$898,000", R.drawable.house1);
         file_maps.put("$390,000", R.drawable.house15);
 
-        for(String name : file_maps.keySet()){
+        for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(getActivity());
             // initialize a SliderLayout
             textSliderView
@@ -166,7 +165,7 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
             //add your extra information
             textSliderView.bundle(new Bundle());
             textSliderView.getBundle()
-                    .putString("extra",name);
+                    .putString("extra", name);
 
             sliderLayout.addSlider(textSliderView);
         }
@@ -180,7 +179,8 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
     }
 
     @Override
-    public void onSliderClick(BaseSliderView slider) {}
+    public void onSliderClick(BaseSliderView slider) {
+    }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -197,9 +197,9 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
 
     }
 
-    public void JSON_DATA_WEB_CALL(){
+    public void JSON_DATA_WEB_CALL() {
 
-        StringRequest stringRequest= new StringRequest(GET_JSON_DATA_HTTP_URL,
+        StringRequest stringRequest = new StringRequest(GET_JSON_DATA_HTTP_URL,
 
                 new Response.Listener<String>() {
                     @Override
@@ -208,7 +208,6 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray = jsonObject.getJSONArray("Property List");
-                            Log.d("rent list json array", jsonArray.toString());
                             JSON_PARSE_DATA_AFTER_WEBCALL(jsonArray);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -228,9 +227,9 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array) {
 
-        for(int i = 0; i<array.length(); i++) {
+        for (int i = 0; i < array.length(); i++) {
 
-            Property property= new Property();
+            Property property = new Property();
 
             try {
                 JSONObject json = array.getJSONObject(i);

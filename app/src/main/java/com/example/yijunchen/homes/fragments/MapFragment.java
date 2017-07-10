@@ -51,16 +51,14 @@ import java.util.List;
  * Created by yijunchen on 7/6/17.
  */
 
-public class MapFragment extends Fragment implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback ,GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener {
+public class MapFragment extends Fragment implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener {
     private GoogleMap mMap;
-    //    List<Property> propertyList;
     Context context;
-    MapView mapView;
     FitWindowsFrameLayout short_view;
     Property target = new Property();
-    Toolbar toolbar;
-
     List<Property> propertyList = new ArrayList<>();
+    TextView filter;
+
     String GET_JSON_DATA_HTTP_URL = "http://rjtmobile.com/aamir/realestate/realestate_app/getproperty.php";
     String JSON_PROPERTY_ID = "PropertyId";
     String JSON_PROPERTY_NAME = "PropertyName";
@@ -83,8 +81,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
 
     RequestQueue requestQueue;
 
-    TextView filter;
-
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private boolean mPermissionDenied = false;
 
@@ -105,14 +101,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
         View v = inflater.inflate(R.layout.map_fragment, container, false);
         short_view = (FitWindowsFrameLayout) v.findViewById(R.id.short_view);
         filter = (TextView) v.findViewById(R.id.filter);
-        //toolbar = (Toolbar) v.findViewById(R.id.map_toolbar);
-
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //Toast.makeText(getActivity(),"clicked",Toast.LENGTH_LONG).show();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
 
@@ -122,12 +115,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
             }
         });
 
-
-
         context = getContext();
         //propertyList = (List<Property>) getActivity().getIntent().getSerializableExtra("propertyList");
-
-        Log.d("property size in map", propertyList.size() + "");
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
@@ -148,17 +137,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
             Property property = propertyList.get(i);
             Log.d("property position", property.getLatitude() + " " + property.getLongitude() + " ");
             LatLng pin1 = new LatLng(property.getLatitude(), property.getLongitude());
-            if(property.getCategory()==1){
+            if (property.getCategory() == 1) {
                 iconFactory.setStyle(IconGenerator.STYLE_ORANGE);
-            } else if(property.getCategory() == 2){
+            } else if (property.getCategory() == 2) {
                 iconFactory.setStyle(IconGenerator.STYLE_GREEN);
-            } else if(property.getCategory()==3){
+            } else if (property.getCategory() == 3) {
                 iconFactory.setStyle(IconGenerator.STYLE_BLUE);
             }
 
             Marker marker = mMap.addMarker(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon("$"+ property.getCost())))
-                    .position(pin1).anchor(iconFactory.getAnchorU(),iconFactory.getAnchorV()));
+                    .icon(BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon("$" + property.getCost())))
+                    .position(pin1).anchor(iconFactory.getAnchorU(), iconFactory.getAnchorV()));
 //                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.dialog3)));
             marker.setTag(property.getId());
             mMap.moveCamera(CameraUpdateFactory.newLatLng(pin1));
@@ -167,7 +156,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
         }
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(41.838874, -87.857666),9));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(41.838874, -87.857666), 9));
         enableMyLocation();
     }
 
@@ -175,14 +164,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
     public boolean onMarkerClick(Marker marker) {
         Log.d("marker tag", marker.getTag().toString());
         int propertyId = (int) marker.getTag();
-        for (Property property: propertyList){
-            if(property.getId()==propertyId){
+        for (Property property : propertyList) {
+            if (property.getId() == propertyId) {
                 target = property;
             }
         }
         ShortViewOfPropertyFragment shortViewOfPropertyFragment = new ShortViewOfPropertyFragment();
         Bundle args = new Bundle();
-        args.putParcelable("property",target);
+        args.putParcelable("property", target);
         shortViewOfPropertyFragment.setArguments(args);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.short_view, shortViewOfPropertyFragment);
@@ -194,7 +183,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
             public void onClick(View v) {
                 PropertyDetailFragment propertyDetailFragment = new PropertyDetailFragment();
                 Bundle args = new Bundle();
-                args.putParcelable("property",target);
+                args.putParcelable("property", target);
                 propertyDetailFragment.setArguments(args);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragment_container, propertyDetailFragment);
@@ -242,18 +231,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
         return false;
     }
 
-    private void addIcon(IconGenerator iconFactory, CharSequence text, LatLng position) {
-        MarkerOptions markerOptions = new MarkerOptions().
-                icon(BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon(text))).
-                position(position).
-                anchor(iconFactory.getAnchorU(), iconFactory.getAnchorV());
+    public void JSON_DATA_WEB_CALL() {
 
-        mMap.addMarker(markerOptions);
-    }
-
-    public void JSON_DATA_WEB_CALL(){
-
-        StringRequest stringRequest= new StringRequest(GET_JSON_DATA_HTTP_URL,
+        StringRequest stringRequest = new StringRequest(GET_JSON_DATA_HTTP_URL,
 
                 new Response.Listener<String>() {
                     @Override
@@ -262,7 +242,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray = jsonObject.getJSONArray("Property List");
-                            Log.d("property json array", jsonArray.toString());
                             JSON_PARSE_DATA_AFTER_WEBCALL(jsonArray);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -306,10 +285,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
                 property.setZipCode(json.getInt(JSON_PROPERTY_ZIP));
                 property.setType(json.getString(JSON_PROPERTY_TYPE));
                 property.setUpdate(json.getString(JSON_PROPERTY_UPDATE));
-                //Log.d("property json array", "property : "+property.toString());
 
             } catch (JSONException e) {
-
                 e.printStackTrace();
             }
             propertyList.add(property);

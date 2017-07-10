@@ -36,11 +36,11 @@ import static android.app.Activity.RESULT_OK;
 
 public class AddPropertyFragment extends Fragment {
     ImageView property_img1;
-    Button addImg1,addImg2,addImg3;
+    Button addImg1, addImg2, addImg3;
     BootstrapButton addPropertyButton;
-    TextView property_name, property_size,property_cost,property_category,
-            property_type,property_add1,property_add2,property_zip, property_lat,
-            property_long,property_des;
+    TextView property_name, property_size, property_cost, property_category,
+            property_type, property_add1, property_add2, property_zip, property_lat,
+            property_long, property_des;
     private static int RESULT_LOAD_IMAGE = 1;
     private static final String url = "http://www.rjtmobile.com/realestate/register.php?property&add";
     public static final String propertyname = "propertyname";
@@ -66,7 +66,7 @@ public class AddPropertyFragment extends Fragment {
         property_zip = (TextView) v.findViewById(R.id.add_property_zip);
         property_lat = (TextView) v.findViewById(R.id.add_property_lat);
         property_long = (TextView) v.findViewById(R.id.add_property_long);
-        property_des= (TextView) v.findViewById(R.id.add_property_des);
+        property_des = (TextView) v.findViewById(R.id.add_property_des);
         property_cost = (TextView) v.findViewById(R.id.add_property_cost);
         property_category = (TextView) v.findViewById(R.id.add_property_cate);
         property_type = (TextView) v.findViewById(R.id.add_property_type);
@@ -118,7 +118,7 @@ public class AddPropertyFragment extends Fragment {
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
             Cursor cursor = getActivity().getContentResolver().query(selectedImage,
                     filePathColumn, null, null, null);
@@ -133,7 +133,7 @@ public class AddPropertyFragment extends Fragment {
         }
     }
 
-    public void addProperty(){
+    public void addProperty() {
         final String name = property_name.getText().toString().trim();
         final String size = property_size.getText().toString().trim();
         final String cost = property_cost.getText().toString().trim();
@@ -150,13 +150,9 @@ public class AddPropertyFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if(response.trim().equals("bool(true)")){
-                            //openProfile();
-//                            Intent intent = new Intent(getActivity(), MainActivity.class);
-//                            intent.putExtra("mobile",phone);
-//                            startActivity(intent);
-                            Toast.makeText(getActivity(),"Property success added",Toast.LENGTH_LONG).show();
-                        }else {
+                        if (response.trim().equals("bool(true)")) {
+                            Toast.makeText(getActivity(), "Property success added", Toast.LENGTH_LONG).show();
+                        } else {
                             Toast.makeText(getActivity(), response, Toast.LENGTH_LONG).show();
                         }
                     }
@@ -164,29 +160,28 @@ public class AddPropertyFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
                     }
-                }){
+                }) {
             @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-                params.put(propertyname,name);
-                params.put(propertysize,size);
-                params.put(propertyadd1,add1);
-                params.put(propertyadd2,add2);
-                params.put(propertytype,type);
-                params.put(propertycost,cost);
-                params.put(propertycategory,category);
-                params.put(propertydes,des);
-                params.put(propertyzip,zip);
-                params.put(propertylat,lat);
-                params.put(propertylong,longitude);
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(propertyname, name);
+                params.put(propertysize, size);
+                params.put(propertyadd1, add1);
+                params.put(propertyadd2, add2);
+                params.put(propertytype, type);
+                params.put(propertycost, cost);
+                params.put(propertycategory, category);
+                params.put(propertydes, des);
+                params.put(propertyzip, zip);
+                params.put(propertylat, lat);
+                params.put(propertylong, longitude);
                 return params;
             }
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
-
     }
 }

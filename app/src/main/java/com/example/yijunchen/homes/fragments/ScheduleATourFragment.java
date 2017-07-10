@@ -17,14 +17,14 @@ import com.example.yijunchen.homes.R;
  * Created by yijunchen on 7/6/17.
  */
 
-public class ScheduleATourFragment extends Fragment{
+public class ScheduleATourFragment extends Fragment {
     BootstrapButton sendEmail;
     EditText getRequest_name, getRequest_phone, getRequest_email, getRequest_body;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.schedule_a_tour,container,false);
+        View v = inflater.inflate(R.layout.schedule_a_tour, container, false);
 
         getRequest_email = (EditText) v.findViewById(R.id.request_email);
         getRequest_name = (EditText) v.findViewById(R.id.request_name);
@@ -37,9 +37,9 @@ public class ScheduleATourFragment extends Fragment{
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("message/rfc822");
-                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{getRequest_email.getText().toString()});
-                i.putExtra(Intent.EXTRA_SUBJECT, "request a tour from "+ getRequest_name.getText());
-                i.putExtra(Intent.EXTRA_TEXT   , getRequest_body.getText());
+                i.putExtra(Intent.EXTRA_EMAIL, new String[]{getRequest_email.getText().toString()});
+                i.putExtra(Intent.EXTRA_SUBJECT, "request a tour from " + getRequest_name.getText());
+                i.putExtra(Intent.EXTRA_TEXT, getRequest_body.getText());
                 try {
                     startActivity(Intent.createChooser(i, "Send mail..."));
                 } catch (android.content.ActivityNotFoundException ex) {

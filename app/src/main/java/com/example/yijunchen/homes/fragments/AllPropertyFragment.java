@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -31,7 +30,7 @@ import java.util.List;
  * Created by yijunchen on 7/2/17.
  */
 
-public class AllPropertyFragment extends Fragment{
+public class AllPropertyFragment extends Fragment {
     List<Property> propertyList = new ArrayList<>();
     RecyclerView recyclerView;
     RecyclerView.LayoutManager recyclerViewlayoutManager;
@@ -42,33 +41,33 @@ public class AllPropertyFragment extends Fragment{
     String JSON_PROPERTY_NAME = "PropertyName";
     String JSON_PROPERTY_DESC = "PropertyDesc";
     String JSON_PROPERTY_TYPE = "PropertyType";
-    String JSON_PROPERTY_CATEGORY ="PropertyCategory";
-    String JSON_PROPERTY_ADDRESS1 ="PropertyAddress1";
-    String JSON_PROPERTY_ADDRESS2 ="PropertyAddress2";
-    String JSON_PROPERTY_ZIP ="PropertyZip";
-    String JSON_PROPERTY_LATITUDE ="PropertyLatitute";
-    String JSON_PROPERTY_LONGITUDE ="PropertyLongtitue";
-    String JSON_PROPERTY_THUMB1 ="PropertyThumb1";
-    String JSON_PROPERTY_THUMB2 ="PropertyThumb2";
-    String JSON_PROPERTY_THUMB3 ="PropertyThumb3";
-    String JSON_PROPERTY_COST ="PropertyCost";
-    String JSON_PROPERTY_SIZE ="PropertySize";
-    String JSON_PROPERTY_STATUS ="PropertyStatus";
-    String JSON_PROPERTY_UPDATE ="PropertyUpdate";
-    String JSON_PROPERTY_SELLER_ID ="PropertySellerID";
+    String JSON_PROPERTY_CATEGORY = "PropertyCategory";
+    String JSON_PROPERTY_ADDRESS1 = "PropertyAddress1";
+    String JSON_PROPERTY_ADDRESS2 = "PropertyAddress2";
+    String JSON_PROPERTY_ZIP = "PropertyZip";
+    String JSON_PROPERTY_LATITUDE = "PropertyLatitute";
+    String JSON_PROPERTY_LONGITUDE = "PropertyLongtitue";
+    String JSON_PROPERTY_THUMB1 = "PropertyThumb1";
+    String JSON_PROPERTY_THUMB2 = "PropertyThumb2";
+    String JSON_PROPERTY_THUMB3 = "PropertyThumb3";
+    String JSON_PROPERTY_COST = "PropertyCost";
+    String JSON_PROPERTY_SIZE = "PropertySize";
+    String JSON_PROPERTY_STATUS = "PropertyStatus";
+    String JSON_PROPERTY_UPDATE = "PropertyUpdate";
+    String JSON_PROPERTY_SELLER_ID = "PropertySellerID";
 
-    RequestQueue requestQueue ;
+    RequestQueue requestQueue;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        if(propertyList.size() == 0){
+        if (propertyList.size() == 0) {
             JSON_DATA_WEB_CALL();
         }
-        View v = inflater.inflate(R.layout.list_all_property,container,false);
+        View v = inflater.inflate(R.layout.list_all_property, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.all_property_recycleview);
-        recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList,getContext());
+        recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList, getContext());
         recycleViewAdapter_subCategory.setOnItemClickListener(new RecycleViewAdapter_SubCategory.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, String data) {
@@ -76,11 +75,10 @@ public class AllPropertyFragment extends Fragment{
                 Bundle args = new Bundle();
                 int position = recyclerView.getChildAdapterPosition(view);
                 Property property = propertyList.get(position);
-                args.putParcelable("property",property);
+                args.putParcelable("property", property);
                 propertyDetailFragment.setArguments(args);
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
                 transaction.replace(R.id.main_fragment_container, propertyDetailFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -95,9 +93,9 @@ public class AllPropertyFragment extends Fragment{
         return v;
     }
 
-    public void JSON_DATA_WEB_CALL(){
+    public void JSON_DATA_WEB_CALL() {
 
-        StringRequest stringRequest= new StringRequest(GET_JSON_DATA_HTTP_URL,
+        StringRequest stringRequest = new StringRequest(GET_JSON_DATA_HTTP_URL,
 
                 new Response.Listener<String>() {
                     @Override
@@ -126,9 +124,9 @@ public class AllPropertyFragment extends Fragment{
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array) {
 
-        for(int i = 0; i<array.length(); i++) {
+        for (int i = 0; i < array.length(); i++) {
 
-            Property property= new Property();
+            Property property = new Property();
 
             try {
                 JSONObject json = array.getJSONObject(i);

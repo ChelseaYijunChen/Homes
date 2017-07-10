@@ -15,26 +15,23 @@ import com.example.yijunchen.homes.R;
  * Created by yijunchen on 7/8/17.
  */
 
-public class SellerAccountFragment extends Fragment{
+public class SellerAccountFragment extends Fragment {
     CardView cardView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.seller_account,container,false);
+        View v = inflater.inflate(R.layout.seller_account, container, false);
         cardView = (CardView) v.findViewById(R.id.add_property);
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
                 transaction.replace(R.id.main_fragment_container, new AddPropertyFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
-
-
         return v;
     }
 }
