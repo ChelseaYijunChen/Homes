@@ -159,6 +159,8 @@ public class Filtered_List_Frag extends Fragment {
                     //                  mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 /*
+
+
                     RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
                     mRecyclerView.setLayoutManager(mLayoutManager);
                     mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
