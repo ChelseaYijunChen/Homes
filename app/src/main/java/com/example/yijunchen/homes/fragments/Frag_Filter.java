@@ -60,12 +60,6 @@ public class Frag_Filter extends Fragment {
             }
         });
 
-
-
-
-
-
-
         property_type_name_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {

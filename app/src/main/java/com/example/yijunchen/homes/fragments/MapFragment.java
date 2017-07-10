@@ -38,7 +38,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.maps.android.ui.BubbleIconFactory;
 import com.google.maps.android.ui.IconGenerator;
 
 import org.json.JSONArray;
@@ -52,7 +51,7 @@ import java.util.List;
  * Created by yijunchen on 7/6/17.
  */
 
-public class MyMapFragment extends Fragment implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback ,GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener {
+public class MapFragment extends Fragment implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback ,GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener {
     private GoogleMap mMap;
     //    List<Property> propertyList;
     Context context;
@@ -90,9 +89,9 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
     private boolean mPermissionDenied = false;
 
 
-    public static MyMapFragment newInstance() {
-        MyMapFragment myMapFragment = new MyMapFragment();
-        return myMapFragment;
+    public static MapFragment newInstance() {
+        MapFragment mapFragment = new MapFragment();
+        return mapFragment;
     }
 
     @Nullable
