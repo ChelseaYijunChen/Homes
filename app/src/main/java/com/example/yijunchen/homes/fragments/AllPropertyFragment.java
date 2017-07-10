@@ -72,7 +72,6 @@ public class AllPropertyFragment extends Fragment{
         recycleViewAdapter_subCategory.setOnItemClickListener(new RecycleViewAdapter_SubCategory.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, String data) {
-                Toast.makeText(getActivity(),recyclerView.getChildAdapterPosition(view)+"", Toast.LENGTH_LONG).show();
                 PropertyDetailFragment propertyDetailFragment = new PropertyDetailFragment();
                 Bundle args = new Bundle();
                 int position = recyclerView.getChildAdapterPosition(view);

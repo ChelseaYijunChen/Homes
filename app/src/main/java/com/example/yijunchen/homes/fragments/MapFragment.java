@@ -117,7 +117,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
 
                 fragmentManager.beginTransaction().replace(R.id.main_fragment_container, new Frag_Filter()).commit();
-                transaction.addToBackStack(null);
+                //transaction.addToBackStack(null);
                 transaction.commit();
             }
         });

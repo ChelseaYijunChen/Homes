@@ -1,5 +1,6 @@
 package com.example.yijunchen.homes.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,7 @@ public class PropertyDetailFragment extends Fragment implements BaseSliderView.O
     @BindView(R.id.property_detail_size) TextView getProperty_size;
     @BindView(R.id.property_detail_update) TextView getProperty_update;
     @BindView(R.id.property_detail_des) TextView getProperty_des;
+    @BindView(R.id.share_icon) ImageView shareProperty;
     @BindView(R.id.schedule_tour_button) com.beardedhen.androidbootstrap.BootstrapButton schedule_tour;
     private SliderLayout mDemoSlider;
     //com.beardedhen.androidbootstrap.BootstrapButton schedule_tour;
@@ -97,6 +100,24 @@ public class PropertyDetailFragment extends Fragment implements BaseSliderView.O
                 transaction.replace(R.id.main_fragment_container, scheduleATourFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+            }
+        });
+
+        shareProperty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("message/rfc822");
+                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{});
+                i.putExtra(Intent.EXTRA_SUBJECT, "Share you a nice house!");
+                i.putExtra(Intent.EXTRA_TEXT , "Hi, I found a very nice property. "+
+                        "It's "+ getProperty_des.getText() + "It has " +getProperty_size.getText() +". It's located in " +getProperty_address.getText() + ". Only cost "+getProperty_price.getText()
+                        +". Come to check more detail.");
+                try {
+                    startActivity(Intent.createChooser(i, "Send mail..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(getActivity(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

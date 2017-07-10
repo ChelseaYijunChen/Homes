@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,31 +24,68 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.yijunchen.homes.R;
+import com.example.yijunchen.homes.adapters.RecycleViewAdapter_SubCategory;
 import com.example.yijunchen.homes.models.Property;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by zhangwenpurdue on 7/10/2017.
  */
 
 public class Filtered_List_Frag extends Fragment {
+    List<Property> propertyList = new ArrayList<Property>();
     RadioGroup radioGroup;
     TextView content;
     RequestQueue requestQueue;
     static String URL;
+
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager recyclerViewlayoutManager;
+    RecycleViewAdapter_SubCategory recycleViewAdapter_subCategory;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.filtered_list_layout, container, false);
-        content = (TextView) view.findViewById(R.id.filteredProperty);
+        View view = inflater.inflate(R.layout.list_all_property,container,false);
+        //content = (TextView) view.findViewById(R.id.filteredProperty);
         Bundle bundle = getArguments();
         URL = (String.valueOf(bundle.getString("url")));
         System.out.print(URL);
         Log.d("url", String.valueOf(bundle.getString("url")));
+        recyclerView = (RecyclerView) view.findViewById(R.id.all_property_recycleview);
         fetchData();
+
+        Log.d("filter list", propertyList.size()+" ");
+
+
+
+//        recycleViewAdapter_subCategory.setOnItemClickListener(new RecycleViewAdapter_SubCategory.OnRecyclerViewItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, String data) {
+//                PropertyDetailFragment propertyDetailFragment = new PropertyDetailFragment();
+//                Bundle args = new Bundle();
+//                int position = recyclerView.getChildAdapterPosition(view);
+//                Property property = propertyList.get(position);
+//                args.putParcelable("property",property);
+//                propertyDetailFragment.setArguments(args);
+//
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//
+//                transaction.replace(R.id.main_fragment_container, propertyDetailFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+//
+//            }
+//        });
+
+
         return view;
     }
 
@@ -154,6 +193,7 @@ public class Filtered_List_Frag extends Fragment {
 
                         }
                         Toast.makeText(getContext(),property.toString(), Toast.LENGTH_SHORT).show();
+                        propertyList.add(property);
                     }
                     //                   mRecyclerView.setAdapter(new SubCategoryAdapter(getActivity(), mList));
                     //                  mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -165,6 +205,12 @@ public class Filtered_List_Frag extends Fragment {
                     mRecyclerView.setItemAnimator(new DefaultItemAnimator());
                     mRecyclerView.setAdapter(new FragHomeAdapterTest(getActivity(), mList));
   */
+                    Log.d("filter list ==", propertyList.size()+" ");
+                    recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList,getContext());
+                    recyclerView.setAdapter(recycleViewAdapter_subCategory);
+                    recyclerViewlayoutManager = new LinearLayoutManager(getContext());
+                    recyclerView.setLayoutManager(recyclerViewlayoutManager);
+                    recyclerView.setHasFixedSize(true);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -176,10 +222,6 @@ public class Filtered_List_Frag extends Fragment {
             }
         });
         requestQueue.add(stringRequest);
-
-
-
-
     }
 }
 

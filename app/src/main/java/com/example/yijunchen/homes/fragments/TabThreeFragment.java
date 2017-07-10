@@ -110,10 +110,10 @@ public class TabThreeFragment extends Fragment implements BaseSliderView.OnSlide
 
     public void showSlider(SliderLayout sliderLayout){
         HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("$2,190,000",R.drawable.house9);
-        file_maps.put("$3,190,000",R.drawable.house10);
-        file_maps.put("$898,000",R.drawable.house11);
-        file_maps.put("$390,000", R.drawable.house12);
+        file_maps.put("$2,190,000",R.drawable.house20);
+        file_maps.put("$3,190,000",R.drawable.house21);
+        file_maps.put("$898,000",R.drawable.house23);
+        file_maps.put("$390,000", R.drawable.house26);
 
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(getActivity());

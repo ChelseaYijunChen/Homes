@@ -120,7 +120,7 @@ public class Frag_Filter extends Fragment {
                 bundle.putString("url", url.toString());
                 Filtered_List_Frag filtered_list_frag = new Filtered_List_Frag();
                 filtered_list_frag.setArguments(bundle);
-                getFragmentManager().beginTransaction().replace(R.id.map, filtered_list_frag).commit();
+                getFragmentManager().beginTransaction().replace(R.id.main_fragment_container, filtered_list_frag).commit();
             }
         });
 

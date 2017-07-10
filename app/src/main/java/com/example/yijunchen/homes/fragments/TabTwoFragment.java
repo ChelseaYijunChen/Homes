@@ -119,10 +119,10 @@ public class TabTwoFragment extends Fragment implements BaseSliderView.OnSliderC
 
     public void showSlider(SliderLayout sliderLayout){
         HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("$2,190,000",R.drawable.house5);
+        file_maps.put("$2,190,000",R.drawable.house3);
         file_maps.put("$3,190,000",R.drawable.house6);
-        file_maps.put("$898,000",R.drawable.house7);
-        file_maps.put("$390,000", R.drawable.house8);
+        file_maps.put("$898,000",R.drawable.house37);
+        file_maps.put("$390,000", R.drawable.house4);
 
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(getActivity());

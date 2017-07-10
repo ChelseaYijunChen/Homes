@@ -31,21 +31,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="12dp"
-                    app:srcCompat="@drawable/share2"
+                    app:srcCompat="@drawable/share5"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="12dp"
                     android:layout_marginTop="12dp" />
 
-                <ImageView
-                    android:id="@+id/love_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="12dp"
-                    app:srcCompat="@drawable/save3"
-                    android:layout_alignTop="@+id/share_icon"
-                    android:layout_toLeftOf="@+id/share_icon"
-                    android:layout_toStartOf="@+id/share_icon" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/love_icon"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginRight="12dp"-->
+                    <!--app:srcCompat="@drawable/save3"-->
+                    <!--android:layout_alignTop="@+id/share_icon"-->
+                    <!--android:layout_toLeftOf="@+id/share_icon"-->
+                    <!--android:layout_toStartOf="@+id/share_icon" />-->
 
                 <TextView
                     android:id="@+id/property_detail_price"
