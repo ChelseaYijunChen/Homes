@@ -20,8 +20,10 @@ import java.util.List;
  * Created by yijunchen on 7/6/17.
  */
 
-public class getAllProperty {
-    List<Property> propertyList = new ArrayList<>();
+public class GetAllProperties {
+    private List<Property> propertyList;
+    private static GetAllProperties singletonObj;
+
     String GET_JSON_DATA_HTTP_URL = "http://rjtmobile.com/aamir/realestate/realestate_app/getproperty.php";
     String JSON_PROPERTY_ID = "PropertyId";
     String JSON_PROPERTY_NAME = "PropertyName";
@@ -43,6 +45,26 @@ public class getAllProperty {
     String JSON_PROPERTY_SELLER_ID ="PropertySellerID";
 
     RequestQueue requestQueue ;
+
+
+
+    private GetAllProperties(){
+
+        propertyList = new ArrayList<Property>();
+        JSON_DATA_WEB_CALL();
+    }
+
+    public static GetAllProperties getSingletonObj(){
+        if (singletonObj == null){
+            singletonObj = new GetAllProperties();
+        }
+        return singletonObj;
+    }
+
+    public List<Property> getAllProperty(){
+
+        return propertyList;
+    }
 
     public void JSON_DATA_WEB_CALL(){
 
@@ -69,7 +91,7 @@ public class getAllProperty {
                     }
                 });
 
-        //requestQueue = Volley.newRequestQueue(getContext());
+        //requestQueue = Volley.newRequestQueue();
         requestQueue.add(stringRequest);
     }
 
@@ -107,16 +129,6 @@ public class getAllProperty {
                 e.printStackTrace();
             }
             propertyList.add(property);
-            //recycleViewAdapter_subCategory.notifyDataSetChanged();
-
-            //Log.d("property json array", "list size"+propertyList.size());
-            //recyclerViewadapter.notifyDataSetChanged();
         }
-
-//        Intent intent = new Intent(getActivity(), MapsActivity.class);
-//        intent.putExtra("propertyList", (Serializable) propertyList);
-//
-//        startActivity(intent);
-
     }
 }

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.example.yijunchen.homes.R;
 import com.example.yijunchen.homes.fragments.AddPropertyFragment;
 import com.example.yijunchen.homes.fragments.AllPropertyFragment;
+import com.example.yijunchen.homes.fragments.CategoryTabFragment;
 import com.example.yijunchen.homes.fragments.Frag_Category;
 import com.example.yijunchen.homes.fragments.MyMapFragment;
 
@@ -30,8 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         final AddPropertyFragment addPropertyFragment = new AddPropertyFragment();
 
+
+        final CategoryTabFragment categoryTabFragment = new CategoryTabFragment();
+
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_fragment_container, frag_category).commit();
+                .replace(R.id.main_fragment_container, categoryTabFragment).commit();
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (item.getItemId()) {
                     case R.id.action_homepage:
-                        fragment = frag_category;
+                        fragment = categoryTabFragment;
                         break;
                     case R.id.action_search:
                         fragment = myMapFragment;
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if(fragment == null){
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.main_fragment_container, frag_category).commit();
+                            .replace(R.id.main_fragment_container, categoryTabFragment).commit();
                            // .replace(R.id.main_fragment_container, allPropertyFragment).commit();
                 } else{
                     getSupportFragmentManager().beginTransaction()
