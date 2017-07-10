@@ -62,10 +62,6 @@ public class Filtered_List_Frag extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.all_property_recycleview);
         fetchData();
 
-        Log.d("filter list", propertyList.size()+" ");
-
-
-
 //        recycleViewAdapter_subCategory.setOnItemClickListener(new RecycleViewAdapter_SubCategory.OnRecyclerViewItemClickListener() {
 //            @Override
 //            public void onItemClick(View view, String data) {
@@ -207,12 +203,18 @@ public class Filtered_List_Frag extends Fragment {
                     mRecyclerView.setItemAnimator(new DefaultItemAnimator());
                     mRecyclerView.setAdapter(new FragHomeAdapterTest(getActivity(), mList));
   */
-                    Log.d("filter list ==", propertyList.size()+" ");
-                    recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList,getContext());
-                    recyclerView.setAdapter(recycleViewAdapter_subCategory);
-                    recyclerViewlayoutManager = new LinearLayoutManager(getContext());
-                    recyclerView.setLayoutManager(recyclerViewlayoutManager);
-                    recyclerView.setHasFixedSize(true);
+
+                    if(propertyList.size()==0){
+                        Toast.makeText(getActivity(),"there is no results", Toast.LENGTH_LONG).show();
+                    } else {
+                        Log.d("filter list ==", propertyList.size()+" ");
+                        recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList,getContext());
+                        recyclerView.setAdapter(recycleViewAdapter_subCategory);
+                        recyclerViewlayoutManager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(recyclerViewlayoutManager);
+                        recyclerView.setHasFixedSize(true);
+                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
