@@ -38,7 +38,6 @@ public class Filtered_List_Frag extends Fragment {
     TextView content;
     RequestQueue requestQueue;
     static String URL;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
