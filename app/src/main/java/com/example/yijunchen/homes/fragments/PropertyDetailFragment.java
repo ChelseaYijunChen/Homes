@@ -35,7 +35,6 @@ public class PropertyDetailFragment extends Fragment implements BaseSliderView.O
     @BindView(R.id.property_detail_status) TextView getProperty_status;
     @BindView(R.id.property_detail_size) TextView getProperty_size;
     @BindView(R.id.property_detail_update) TextView getProperty_update;
-//    @BindView(R.id.property_detail_sellerId) TextView getProperty_sellerId;
     @BindView(R.id.property_detail_des) TextView getProperty_des;
     @BindView(R.id.schedule_tour_button) com.beardedhen.androidbootstrap.BootstrapButton schedule_tour;
     private SliderLayout mDemoSlider;
@@ -56,7 +55,6 @@ public class PropertyDetailFragment extends Fragment implements BaseSliderView.O
         getProperty_address.setText(property.getAddress1()+property.getAddress2());
         getProperty_size.setText(property.getSize()+"ft");
         getProperty_status.setText(property.getStatus());
-//        getProperty_sellerId.setText(property.getSellerId()+"");
         getProperty_type.setText(property.getType());
         getProperty_update.setText(property.getUpdate());
         //schedule_tour = v.findViewById(R.id.schedule_tour_button);
@@ -64,7 +62,6 @@ public class PropertyDetailFragment extends Fragment implements BaseSliderView.O
 
         mDemoSlider = (SliderLayout)v.findViewById(R.id.property_detail_slider);
         HashMap<String,String> url_maps = new HashMap<String, String>();
-//        url_maps.put("1",property.getImgThumb1());
         url_maps.put("2",property.getImgThumb2());
         url_maps.put("3",property.getImgThumb3());
 

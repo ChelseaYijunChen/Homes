@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.example.yijunchen.homes.R;
 import com.example.yijunchen.homes.fragments.AddPropertyFragment;
 import com.example.yijunchen.homes.fragments.AllPropertyFragment;
+import com.example.yijunchen.homes.fragments.CategoryTabFragment;
 import com.example.yijunchen.homes.fragments.Frag_Category;
 import com.example.yijunchen.homes.fragments.MyMapFragment;
 import com.example.yijunchen.homes.fragments.SellerAccountFragment;
@@ -27,12 +28,14 @@ public class SellerActivity extends AppCompatActivity {
 
         final MyMapFragment myMapFragment = new MyMapFragment();
 
+        final CategoryTabFragment categoryTabFragment = new CategoryTabFragment();
+
         final AddPropertyFragment addPropertyFragment = new AddPropertyFragment();
 
         final SellerAccountFragment sellerAccountFragment = new SellerAccountFragment();
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_fragment_container, frag_category).commit();
+                .replace(R.id.main_fragment_container, categoryTabFragment).commit();
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -41,7 +44,7 @@ public class SellerActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (item.getItemId()) {
                     case R.id.action_homepage:
-                        fragment = frag_category;
+                        fragment = categoryTabFragment;
                         break;
                     case R.id.action_search:
                         fragment = myMapFragment;
@@ -52,7 +55,7 @@ public class SellerActivity extends AppCompatActivity {
                 }
                 if(fragment == null){
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.main_fragment_container, frag_category).commit();
+                            .replace(R.id.main_fragment_container, categoryTabFragment).commit();
                 } else{
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_fragment_container, fragment).commit();

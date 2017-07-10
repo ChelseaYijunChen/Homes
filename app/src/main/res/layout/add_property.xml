@@ -183,9 +183,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select Photo from gallery"
-            android:layout_above="@+id/schedule_tour_button"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/divider3"
             android:layout_toRightOf="@+id/add_property_img3"
             android:layout_toEndOf="@+id/add_property_img3" />
 
@@ -195,7 +193,7 @@
 
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/schedule_tour_button"
+            android:id="@+id/add_property_button"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/divider3"
@@ -207,7 +205,6 @@
             app:buttonMode="regular"
             app:showOutline="false"
             app:roundedCorners="true"
-            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>

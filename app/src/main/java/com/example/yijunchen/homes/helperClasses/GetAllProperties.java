@@ -1,5 +1,8 @@
 package com.example.yijunchen.homes.helperClasses;
 
+import android.app.Application;
+import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.android.volley.RequestQueue;
@@ -20,7 +23,7 @@ import java.util.List;
  * Created by yijunchen on 7/6/17.
  */
 
-public class GetAllProperties {
+public class GetAllProperties{
     private List<Property> propertyList;
     private static GetAllProperties singletonObj;
 
@@ -46,27 +49,25 @@ public class GetAllProperties {
 
     RequestQueue requestQueue ;
 
-
-
-    private GetAllProperties(){
-
+    private GetAllProperties(Context context) {
+        Log.d("property single","in size the constructor");
         propertyList = new ArrayList<Property>();
-        JSON_DATA_WEB_CALL();
+        JSON_DATA_WEB_CALL(context, propertyList);
     }
 
-    public static GetAllProperties getSingletonObj(){
+    public static GetAllProperties getSingletonObj(Context context){
         if (singletonObj == null){
-            singletonObj = new GetAllProperties();
+            singletonObj = new GetAllProperties(context);
         }
         return singletonObj;
     }
 
     public List<Property> getAllProperty(){
 
-        return propertyList;
+        return this.propertyList;
     }
 
-    public void JSON_DATA_WEB_CALL(){
+    public List<Property> JSON_DATA_WEB_CALL(Context context, final List<Property> propertyList){
 
         StringRequest stringRequest= new StringRequest(GET_JSON_DATA_HTTP_URL,
 
@@ -78,7 +79,7 @@ public class GetAllProperties {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray = jsonObject.getJSONArray("Property List");
                             Log.d("property json array", jsonArray.toString());
-                            JSON_PARSE_DATA_AFTER_WEBCALL(jsonArray);
+                            JSON_PARSE_DATA_AFTER_WEBCALL(jsonArray, propertyList);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -91,13 +92,14 @@ public class GetAllProperties {
                     }
                 });
 
-        //requestQueue = Volley.newRequestQueue();
+        requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
+        return propertyList;
     }
 
-    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array) {
+    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array, List<Property> propertyList) {
 
-        Log.d("property json array", "array length"+array.length());
+        Log.d("property list+++++++", "array length"+array.length());
         for(int i = 0; i<array.length(); i++) {
 
             Property property= new Property();
@@ -129,6 +131,7 @@ public class GetAllProperties {
                 e.printStackTrace();
             }
             propertyList.add(property);
+
         }
     }
 }

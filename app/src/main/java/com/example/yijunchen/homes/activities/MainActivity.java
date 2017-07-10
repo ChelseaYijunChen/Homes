@@ -1,5 +1,6 @@
 package com.example.yijunchen.homes.activities;
 
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -8,12 +9,26 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.yijunchen.homes.R;
 import com.example.yijunchen.homes.fragments.AddPropertyFragment;
 import com.example.yijunchen.homes.fragments.AllPropertyFragment;
 import com.example.yijunchen.homes.fragments.CategoryTabFragment;
 import com.example.yijunchen.homes.fragments.Frag_Category;
 import com.example.yijunchen.homes.fragments.MyMapFragment;
+import com.example.yijunchen.homes.models.Property;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -24,13 +39,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final AllPropertyFragment allPropertyFragment = new AllPropertyFragment();
-
-        final Frag_Category frag_category = new Frag_Category();
+        //final Frag_Category frag_category = new Frag_Category();
 
         final MyMapFragment myMapFragment = new MyMapFragment();
 
         final AddPropertyFragment addPropertyFragment = new AddPropertyFragment();
-
 
         final CategoryTabFragment categoryTabFragment = new CategoryTabFragment();
 
