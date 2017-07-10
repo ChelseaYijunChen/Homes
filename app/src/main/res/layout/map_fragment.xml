@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:id="@+id/container">
     <!--<include layout="@layout/toolbar_search_layout" android:id="@+id/titlebar"/>-->
-    <include layout="@layout/map_tool_bar" android:id="@+id/toolbar" />
+    <include layout="@layout/map_tool_bar" android:id="@+id/map_toolbar" />
 
 
     <LinearLayout
