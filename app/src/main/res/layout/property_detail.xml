@@ -145,7 +145,7 @@ Baths" />
                     android:text="None at this time" />
 
                 <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/add_property_button"
+                    android:id="@+id/schedule_tour_button"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:text="Schedule a Private Tour"

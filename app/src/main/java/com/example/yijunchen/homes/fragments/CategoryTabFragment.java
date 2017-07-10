@@ -43,8 +43,6 @@ public class CategoryTabFragment extends Fragment implements TabLayout.OnTabSele
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.category_tablayout,container,false);
 
-
-        //Initializing the tablayout
         tabLayout = (TabLayout) v.findViewById(R.id.category_tablayout);
 
         tabLayout.addTab(tabLayout.newTab().setText("Rent"));

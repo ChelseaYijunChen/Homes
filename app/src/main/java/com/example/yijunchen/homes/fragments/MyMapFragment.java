@@ -141,6 +141,14 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
             Property property = propertyList.get(i);
             Log.d("property position", property.getLatitude() + " " + property.getLongitude() + " ");
             LatLng pin1 = new LatLng(property.getLatitude(), property.getLongitude());
+            if(property.getCategory()==1){
+                iconFactory.setStyle(IconGenerator.STYLE_ORANGE);
+            } else if(property.getCategory() == 2){
+                iconFactory.setStyle(IconGenerator.STYLE_GREEN);
+            } else if(property.getCategory()==3){
+                iconFactory.setStyle(IconGenerator.STYLE_BLUE);
+            }
+
             Marker marker = mMap.addMarker(new MarkerOptions()
                     .icon(BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon("$"+ property.getCost())))
                     .position(pin1).anchor(iconFactory.getAnchorU(),iconFactory.getAnchorV()));
@@ -152,6 +160,7 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
         }
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(41.838874, -87.857666),9));
         enableMyLocation();
     }
 
@@ -264,7 +273,6 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array) {
 
-        Log.d("property json array", "array length" + array.length());
         for (int i = 0; i < array.length(); i++) {
 
             Property property = new Property();

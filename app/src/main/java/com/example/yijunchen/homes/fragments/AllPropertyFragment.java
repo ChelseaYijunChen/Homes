@@ -72,8 +72,7 @@ public class AllPropertyFragment extends Fragment{
             JSON_DATA_WEB_CALL();
         }
         View v = inflater.inflate(R.layout.list_all_property,container,false);
-
-        //recyclerView = (RecyclerView) v.findViewById(R.id.all_property_recycleview);
+        recyclerView = (RecyclerView) v.findViewById(R.id.all_property_recycleview);
         recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList,getContext());
         recycleViewAdapter_subCategory.setOnItemClickListener(new RecycleViewAdapter_SubCategory.OnRecyclerViewItemClickListener() {
             @Override
@@ -133,7 +132,6 @@ public class AllPropertyFragment extends Fragment{
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array) {
 
-        Log.d("property json array", "array length"+array.length());
         for(int i = 0; i<array.length(); i++) {
 
             Property property= new Property();
@@ -158,7 +156,6 @@ public class AllPropertyFragment extends Fragment{
                 property.setZipCode(json.getInt(JSON_PROPERTY_ZIP));
                 property.setType(json.getString(JSON_PROPERTY_TYPE));
                 property.setUpdate(json.getString(JSON_PROPERTY_UPDATE));
-                //Log.d("property json array", "property : "+property.toString());
 
             } catch (JSONException e) {
 
@@ -166,19 +163,6 @@ public class AllPropertyFragment extends Fragment{
             }
             propertyList.add(property);
             recycleViewAdapter_subCategory.notifyDataSetChanged();
-
-
-
-            //Log.d("property json array", "list size"+propertyList.size());
-            //recyclerViewadapter.notifyDataSetChanged();
         }
-
-//        Intent intent = new Intent(getActivity(), MapsActivity.class);
-//        intent.putExtra("propertyList", (Serializable) propertyList);
-//
-//        startActivity(intent);
-
     }
-
-
 }
