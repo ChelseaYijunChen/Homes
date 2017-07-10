@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -37,7 +38,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.maps.android.ui.BubbleIconFactory;
 import com.google.maps.android.ui.IconGenerator;
 
 import org.json.JSONArray;
@@ -51,13 +51,14 @@ import java.util.List;
  * Created by yijunchen on 7/6/17.
  */
 
-public class MyMapFragment extends Fragment implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback ,GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener {
+public class MapFragment extends Fragment implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback ,GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener {
     private GoogleMap mMap;
     //    List<Property> propertyList;
     Context context;
     MapView mapView;
     FitWindowsFrameLayout short_view;
     Property target = new Property();
+    Toolbar toolbar;
 
     List<Property> propertyList = new ArrayList<>();
     String GET_JSON_DATA_HTTP_URL = "http://rjtmobile.com/aamir/realestate/realestate_app/getproperty.php";
@@ -88,9 +89,9 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
     private boolean mPermissionDenied = false;
 
 
-    public static MyMapFragment newInstance() {
-        MyMapFragment myMapFragment = new MyMapFragment();
-        return myMapFragment;
+    public static MapFragment newInstance() {
+        MapFragment mapFragment = new MapFragment();
+        return mapFragment;
     }
 
     @Nullable
@@ -104,13 +105,20 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
         View v = inflater.inflate(R.layout.map_fragment, container, false);
         short_view = (FitWindowsFrameLayout) v.findViewById(R.id.short_view);
         filter = (TextView) v.findViewById(R.id.filter);
+        //toolbar = (Toolbar) v.findViewById(R.id.map_toolbar);
+
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getChildFragmentManager();
 
-                fragmentManager.beginTransaction().replace(R.id.map, new Frag_Filter()).commit();
+                //Toast.makeText(getActivity(),"clicked",Toast.LENGTH_LONG).show();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+                fragmentManager.beginTransaction().replace(R.id.main_fragment_container, new Frag_Filter()).commit();
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
@@ -178,6 +186,7 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
         shortViewOfPropertyFragment.setArguments(args);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.short_view, shortViewOfPropertyFragment);
+        transaction.addToBackStack(null);
         transaction.commit();
 
         short_view.setOnClickListener(new View.OnClickListener() {
@@ -189,6 +198,7 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback, Activ
                 propertyDetailFragment.setArguments(args);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragment_container, propertyDetailFragment);
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yijunchen.homes.fragments.MyMapFragment"
+    tools:context="com.example.yijunchen.homes.fragments.MapFragment"
     android:orientation="vertical"
     android:id="@+id/container">
     <!--<include layout="@layout/toolbar_search_layout" android:id="@+id/titlebar"/>-->
-    <include layout="@layout/map_tool_bar" android:id="@+id/toolbar" />
+    <include layout="@layout/map_tool_bar" android:id="@+id/map_toolbar" />
 
 
     <LinearLayout

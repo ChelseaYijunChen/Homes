@@ -12,7 +12,7 @@ import com.example.yijunchen.homes.fragments.AddPropertyFragment;
 import com.example.yijunchen.homes.fragments.AllPropertyFragment;
 import com.example.yijunchen.homes.fragments.CategoryTabFragment;
 import com.example.yijunchen.homes.fragments.Frag_Category;
-import com.example.yijunchen.homes.fragments.MyMapFragment;
+import com.example.yijunchen.homes.fragments.MapFragment;
 import com.example.yijunchen.homes.fragments.SellerAccountFragment;
 
 public class SellerActivity extends AppCompatActivity {
@@ -26,7 +26,7 @@ public class SellerActivity extends AppCompatActivity {
 
         final Frag_Category frag_category = new Frag_Category();
 
-        final MyMapFragment myMapFragment = new MyMapFragment();
+        final MapFragment mapFragment = new MapFragment();
 
         final CategoryTabFragment categoryTabFragment = new CategoryTabFragment();
 
@@ -47,7 +47,7 @@ public class SellerActivity extends AppCompatActivity {
                         fragment = categoryTabFragment;
                         break;
                     case R.id.action_search:
-                        fragment = myMapFragment;
+                        fragment = mapFragment;
                         break;
                     case R.id.action_my_account:
                         fragment = sellerAccountFragment;
