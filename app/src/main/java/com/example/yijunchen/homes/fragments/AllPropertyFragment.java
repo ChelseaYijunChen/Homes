@@ -18,6 +18,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.yijunchen.homes.R;
 import com.example.yijunchen.homes.adapters.RecycleViewAdapter_SubCategory;
 import com.example.yijunchen.homes.models.Property;
+import com.example.yijunchen.homes.models.PropertyList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,7 +32,7 @@ import java.util.List;
  */
 
 public class AllPropertyFragment extends Fragment {
-    List<Property> propertyList = new ArrayList<>();
+    List<Property> propertyList = PropertyList.getInstance();
     RecyclerView recyclerView;
     RecyclerView.LayoutManager recyclerViewlayoutManager;
     RecycleViewAdapter_SubCategory recycleViewAdapter_subCategory;

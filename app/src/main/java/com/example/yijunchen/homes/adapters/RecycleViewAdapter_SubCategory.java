@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.yijunchen.homes.R;
 import com.example.yijunchen.homes.models.Property;
+import com.example.yijunchen.homes.models.PropertyList;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.List;
 
 public class RecycleViewAdapter_SubCategory extends RecyclerView.Adapter<RecycleViewAdapter_SubCategory.ViewHolder> implements View.OnClickListener {
     Context context;
-    List<Property> propertyList;
+    List<Property> propertyList = PropertyList.getInstance();
 
     public RecycleViewAdapter_SubCategory(List<Property> propertyList, Context context) {
         super();
