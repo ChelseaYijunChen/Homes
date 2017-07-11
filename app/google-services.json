@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "206226721220",
+    "project_id": "homes-bf1cd"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206226721220:android:fadb0092a413f9d6",
+        "android_client_info": {
+          "package_name": "com.example.yijunchen.homes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206226721220-bssogjoboknra4g4vo451n7sqlvqqb0h.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "206226721220-cq1c8132rldtpunabppm42hka0k7467m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yijunchen.homes",
+            "certificate_hash": "9187a0607249f93fabacdfc40fc657d717d65db4"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhnH2uy8VHco8raKc8gYKK6zxQqH2S38k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -21,13 +21,10 @@ public class SellerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller);
-        final AllPropertyFragment allPropertyFragment = new AllPropertyFragment();
 
         final MapFragment mapFragment = new MapFragment();
 
         final CategoryTabFragment categoryTabFragment = new CategoryTabFragment();
-
-        final AddPropertyFragment addPropertyFragment = new AddPropertyFragment();
 
         final SellerAccountFragment sellerAccountFragment = new SellerAccountFragment();
 
@@ -50,10 +47,10 @@ public class SellerActivity extends AppCompatActivity {
                         fragment = sellerAccountFragment;
                         break;
                 }
-                if(fragment == null){
+                if (fragment == null) {
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_fragment_container, categoryTabFragment).commit();
-                } else{
+                } else {
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_fragment_container, fragment).commit();
                 }

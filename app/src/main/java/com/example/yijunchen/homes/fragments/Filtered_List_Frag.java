@@ -1,20 +1,15 @@
 package com.example.yijunchen.homes.fragments;
 
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -30,7 +25,6 @@ import com.example.yijunchen.homes.models.Property;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +45,7 @@ public class Filtered_List_Frag extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.list_all_property,container,false);
+        View view = inflater.inflate(R.layout.list_all_property, container, false);
         Bundle bundle = getArguments();
         URL = (String.valueOf(bundle.getString("url")));
         System.out.print(URL);
@@ -157,11 +151,11 @@ public class Filtered_List_Frag extends Fragment {
                         }
                         propertyList.add(property);
                     }
-                    if(propertyList.size()==0){
-                        Toast.makeText(getActivity(),"there is no results", Toast.LENGTH_LONG).show();
+                    if (propertyList.size() == 0) {
+                        Toast.makeText(getActivity(), "there is no results", Toast.LENGTH_LONG).show();
                     } else {
-                        Log.d("filter list ==", propertyList.size()+" ");
-                        recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList,getContext());
+                        Log.d("filter list ==", propertyList.size() + " ");
+                        recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList, getContext());
                         recycleViewAdapter_subCategory.notifyDataSetChanged();
                         recyclerView.setAdapter(recycleViewAdapter_subCategory);
                         recyclerViewlayoutManager = new LinearLayoutManager(getContext());
@@ -174,7 +168,7 @@ public class Filtered_List_Frag extends Fragment {
                                 Bundle args = new Bundle();
                                 int position = recyclerView.getChildAdapterPosition(view);
                                 Property property = propertyList.get(position);
-                                args.putParcelable("property",property);
+                                args.putParcelable("property", property);
                                 propertyDetailFragment.setArguments(args);
 
                                 FragmentTransaction transaction = getFragmentManager().beginTransaction();

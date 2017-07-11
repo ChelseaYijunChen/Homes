@@ -192,7 +192,7 @@
             android:id="@+id/divider3"
             style="@style/Big_Divider"
             android:layout_below="@+id/add_property_img3" />
-        
+
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/add_property_button"
             android:layout_width="320dp"

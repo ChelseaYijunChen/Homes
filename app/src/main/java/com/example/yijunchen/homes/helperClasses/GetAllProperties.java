@@ -23,7 +23,7 @@ import java.util.List;
  * Created by yijunchen on 7/6/17.
  */
 
-public class GetAllProperties{
+public class GetAllProperties {
     private List<Property> propertyList;
     private static GetAllProperties singletonObj;
 
@@ -32,44 +32,44 @@ public class GetAllProperties{
     String JSON_PROPERTY_NAME = "PropertyName";
     String JSON_PROPERTY_DESC = "PropertyDesc";
     String JSON_PROPERTY_TYPE = "PropertyType";
-    String JSON_PROPERTY_CATEGORY ="PropertyCategory";
-    String JSON_PROPERTY_ADDRESS1 ="PropertyAddress1";
-    String JSON_PROPERTY_ADDRESS2 ="PropertyAddress2";
-    String JSON_PROPERTY_ZIP ="PropertyZip";
-    String JSON_PROPERTY_LATITUDE ="PropertyLatitute";
-    String JSON_PROPERTY_LONGITUDE ="PropertyLongtitue";
-    String JSON_PROPERTY_THUMB1 ="PropertyThumb1";
-    String JSON_PROPERTY_THUMB2 ="PropertyThumb2";
-    String JSON_PROPERTY_THUMB3 ="PropertyThumb3";
-    String JSON_PROPERTY_COST ="PropertyCost";
-    String JSON_PROPERTY_SIZE ="PropertySize";
-    String JSON_PROPERTY_STATUS ="PropertyStatus";
-    String JSON_PROPERTY_UPDATE ="PropertyUpdate";
-    String JSON_PROPERTY_SELLER_ID ="PropertySellerID";
+    String JSON_PROPERTY_CATEGORY = "PropertyCategory";
+    String JSON_PROPERTY_ADDRESS1 = "PropertyAddress1";
+    String JSON_PROPERTY_ADDRESS2 = "PropertyAddress2";
+    String JSON_PROPERTY_ZIP = "PropertyZip";
+    String JSON_PROPERTY_LATITUDE = "PropertyLatitute";
+    String JSON_PROPERTY_LONGITUDE = "PropertyLongtitue";
+    String JSON_PROPERTY_THUMB1 = "PropertyThumb1";
+    String JSON_PROPERTY_THUMB2 = "PropertyThumb2";
+    String JSON_PROPERTY_THUMB3 = "PropertyThumb3";
+    String JSON_PROPERTY_COST = "PropertyCost";
+    String JSON_PROPERTY_SIZE = "PropertySize";
+    String JSON_PROPERTY_STATUS = "PropertyStatus";
+    String JSON_PROPERTY_UPDATE = "PropertyUpdate";
+    String JSON_PROPERTY_SELLER_ID = "PropertySellerID";
 
-    RequestQueue requestQueue ;
+    RequestQueue requestQueue;
 
     private GetAllProperties(Context context) {
-        Log.d("property single","in size the constructor");
+        Log.d("property single", "in size the constructor");
         propertyList = new ArrayList<Property>();
         JSON_DATA_WEB_CALL(context, propertyList);
     }
 
-    public static GetAllProperties getSingletonObj(Context context){
-        if (singletonObj == null){
+    public static GetAllProperties getSingletonObj(Context context) {
+        if (singletonObj == null) {
             singletonObj = new GetAllProperties(context);
         }
         return singletonObj;
     }
 
-    public List<Property> getAllProperty(){
+    public List<Property> getAllProperty() {
 
         return this.propertyList;
     }
 
-    public List<Property> JSON_DATA_WEB_CALL(Context context, final List<Property> propertyList){
+    public List<Property> JSON_DATA_WEB_CALL(Context context, final List<Property> propertyList) {
 
-        StringRequest stringRequest= new StringRequest(GET_JSON_DATA_HTTP_URL,
+        StringRequest stringRequest = new StringRequest(GET_JSON_DATA_HTTP_URL,
 
                 new Response.Listener<String>() {
                     @Override
@@ -99,10 +99,10 @@ public class GetAllProperties{
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array, List<Property> propertyList) {
 
-        Log.d("property list+++++++", "array length"+array.length());
-        for(int i = 0; i<array.length(); i++) {
+        Log.d("property list+++++++", "array length" + array.length());
+        for (int i = 0; i < array.length(); i++) {
 
-            Property property= new Property();
+            Property property = new Property();
 
             try {
                 JSONObject json = array.getJSONObject(i);
@@ -124,10 +124,8 @@ public class GetAllProperties{
                 property.setZipCode(json.getInt(JSON_PROPERTY_ZIP));
                 property.setType(json.getString(JSON_PROPERTY_TYPE));
                 property.setUpdate(json.getString(JSON_PROPERTY_UPDATE));
-                //Log.d("property json array", "property : "+property.toString());
 
             } catch (JSONException e) {
-
                 e.printStackTrace();
             }
             propertyList.add(property);

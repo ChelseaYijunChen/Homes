@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -31,7 +30,6 @@ import com.example.yijunchen.homes.activities.MainActivity;
 import com.example.yijunchen.homes.models.Property;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -83,7 +81,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private boolean mPermissionDenied = false;
-
 
     public static MapFragment newInstance() {
         MapFragment mapFragment = new MapFragment();
@@ -148,7 +145,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
             Marker marker = mMap.addMarker(new MarkerOptions()
                     .icon(BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon("$" + property.getCost())))
                     .position(pin1).anchor(iconFactory.getAnchorU(), iconFactory.getAnchorV()));
-//                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.dialog3)));
             marker.setTag(property.getId());
             mMap.moveCamera(CameraUpdateFactory.newLatLng(pin1));
             mMap.setOnMarkerClickListener(this);
@@ -290,7 +286,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
                 e.printStackTrace();
             }
             propertyList.add(property);
-
         }
     }
 }

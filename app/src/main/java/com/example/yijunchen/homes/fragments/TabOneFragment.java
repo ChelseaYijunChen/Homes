@@ -91,14 +91,6 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
         mDemoSlider = (SliderLayout) v.findViewById(R.id.rent_slider);
         showSlider(mDemoSlider);
 
-//        Log.d("######rent list", propertyList.size()+" ");
-//        for (int i =0; i<propertyList.size();i++){
-//            Log.d("++++rent list", propertyList.get(i).toString());
-//            if(propertyList.get(i).getCategory() == 2){
-//                rentPropertyList.add(propertyList.get(i));
-//            }
-//            Log.d("rent list", rentPropertyList.size()+" ");
-//        }
         recyclerView = (RecyclerView) v.findViewById(R.id.rent_all_property_recycleview);
         recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList, getContext());
         recycleViewAdapter_subCategory.setOnItemClickListener(new RecycleViewAdapter_SubCategory.OnRecyclerViewItemClickListener() {

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.example.yijunchen.homes"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -38,6 +38,11 @@ dependencies {
     compile 'com.daimajia.slider:library:1.1.5@aar'
     compile 'com.beardedhen:androidbootstrap:2.3.1'
     compile 'com.google.maps.android:android-maps-utils:0.5+'
+    compile 'com.google.android.gms:play-services-auth:11.0.1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+
 }
+
+apply plugin: 'com.google.gms.google-services'

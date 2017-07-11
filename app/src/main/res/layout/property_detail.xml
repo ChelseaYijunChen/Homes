@@ -297,7 +297,6 @@ Baths" />
                 android:layout_margin="8dp"
                 android:orientation="vertical">
 
-
                 <TextView
                     android:id="@+id/nearby_school"
                     android:layout_width="match_parent"

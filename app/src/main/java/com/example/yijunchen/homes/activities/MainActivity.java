@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.yijunchen.homes.R;
-import com.example.yijunchen.homes.fragments.AddPropertyFragment;
 import com.example.yijunchen.homes.fragments.AllPropertyFragment;
 import com.example.yijunchen.homes.fragments.CategoryTabFragment;
 import com.example.yijunchen.homes.fragments.MapFragment;
@@ -22,11 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final AllPropertyFragment allPropertyFragment = new AllPropertyFragment();
-        //final Frag_Category frag_category = new Frag_Category();
 
         final MapFragment mapFragment = new MapFragment();
-
-        final AddPropertyFragment addPropertyFragment = new AddPropertyFragment();
 
         final CategoryTabFragment categoryTabFragment = new CategoryTabFragment();
 
@@ -41,30 +37,23 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_homepage:
                         fragment = categoryTabFragment;
-
-
                         break;
                     case R.id.action_search:
                         fragment = mapFragment;
-
                         break;
 //                    case R.id.action_save:
 //                        fragment = addPropertyFragment;
 //                        break;
                 }
-                if(fragment == null){
-                   getSupportFragmentManager().beginTransaction()
+                if (fragment == null) {
+                    getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_fragment_container, categoryTabFragment).commit();
-                           // .replace(R.id.main_fragment_container, allPropertyFragment).commit();
-
-                } else{
+                } else {
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_fragment_container, fragment).commit();
-
                 }
                 return true;
             }
         });
-
     }
 }
