@@ -150,6 +150,7 @@ public class AllPropertyFragment extends Fragment {
                 property.setType(json.getString(JSON_PROPERTY_TYPE));
                 property.setUpdate(json.getString(JSON_PROPERTY_UPDATE));
 
+
             } catch (JSONException e) {
 
                 e.printStackTrace();
