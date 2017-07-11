@@ -43,17 +43,17 @@ public class AddPropertyFragment extends Fragment {
             property_long, property_des;
     private static int RESULT_LOAD_IMAGE = 1;
     private static final String url = "http://www.rjtmobile.com/realestate/register.php?property&add";
-    public static final String propertyname = "propertyname";
-    public static final String propertysize = "propertysize";
-    public static final String propertyadd1 = "propertyadd1";
-    public static final String propertyadd2 = "propertyadd2";
-    public static final String propertycost = "propertycost";
-    public static final String propertycategory = "propertycategory";
-    public static final String propertytype = "propertytype";
-    public static final String propertyzip = "propertyzip";
-    public static final String propertylat = "propertylat";
-    public static final String propertylong = "propertylong";
-    public static final String propertydes = "propertydescription";
+    public static final String PROPERTY_NAME = "propertyname";
+    public static final String PROPERTY_SIZE = "propertysize";
+    public static final String PROPERTY_ADDRESS1 = "propertyadd1";
+    public static final String PROPERTY_ADDRESS2 = "propertyadd2";
+    public static final String PROPERTY_COST = "propertycost";
+    public static final String PROPERTY_CATEGORY = "propertycategory";
+    public static final String PROPERTY_TYPE = "propertytype";
+    public static final String PROPERTY_ZIP = "propertyzip";
+    public static final String PROPERTY_LAT = "propertylat";
+    public static final String PROPERTY_LONG = "propertylong";
+    public static final String PROPERTY_DESCRIPTION = "propertydescription";
 
     @Nullable
     @Override
@@ -70,13 +70,13 @@ public class AddPropertyFragment extends Fragment {
         property_cost = (TextView) v.findViewById(R.id.add_property_cost);
         property_category = (TextView) v.findViewById(R.id.add_property_cate);
         property_type = (TextView) v.findViewById(R.id.add_property_type);
-
         addPropertyButton = (BootstrapButton) v.findViewById(R.id.add_property_button);
-
         property_img1 = (ImageView) v.findViewById(R.id.add_property_img1);
         addImg1 = (Button) v.findViewById(R.id.add_property_img1_button);
         addImg2 = (Button) v.findViewById(R.id.add_property_img2_button);
         addImg3 = (Button) v.findViewById(R.id.add_property_img3_button);
+
+        /* Add photo from gallery  */
         addImg1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,7 +129,6 @@ public class AddPropertyFragment extends Fragment {
             cursor.close();
 
             property_img1.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
         }
     }
 
@@ -166,17 +165,17 @@ public class AddPropertyFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put(propertyname, name);
-                params.put(propertysize, size);
-                params.put(propertyadd1, add1);
-                params.put(propertyadd2, add2);
-                params.put(propertytype, type);
-                params.put(propertycost, cost);
-                params.put(propertycategory, category);
-                params.put(propertydes, des);
-                params.put(propertyzip, zip);
-                params.put(propertylat, lat);
-                params.put(propertylong, longitude);
+                params.put(PROPERTY_NAME, name);
+                params.put(PROPERTY_SIZE, size);
+                params.put(PROPERTY_ADDRESS1, add1);
+                params.put(PROPERTY_ADDRESS2, add2);
+                params.put(PROPERTY_TYPE, type);
+                params.put(PROPERTY_COST, cost);
+                params.put(PROPERTY_CATEGORY, category);
+                params.put(PROPERTY_DESCRIPTION, des);
+                params.put(PROPERTY_ZIP, zip);
+                params.put(PROPERTY_LAT, lat);
+                params.put(PROPERTY_LONG, longitude);
                 return params;
             }
         };

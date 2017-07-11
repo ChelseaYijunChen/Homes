@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity implements
 
         /* Google login begin */
         SignInButton googleSignInButton = (SignInButton) findViewById(R.id.sign_in_button);
-
         googleSignInButton.setOnClickListener(this);
 
         // Configure sign-in to request the user's ID, email address, and basic
@@ -100,11 +99,9 @@ public class LoginActivity extends AppCompatActivity implements
             // If the user has not previously signed in on this device or the sign-in has expired,
             // this asynchronous branch will attempt to sign in the user silently.  Cross-device
             // single sign-on will occur in this branch.
-            //showProgressDialog();
             opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
                 @Override
                 public void onResult(GoogleSignInResult googleSignInResult) {
-                    //hideProgressDialog();
                     handleSignInResult(googleSignInResult);
                 }
             });
@@ -114,7 +111,6 @@ public class LoginActivity extends AppCompatActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-        //hideProgressDialog();
     }
 
     @Override
@@ -145,11 +141,13 @@ public class LoginActivity extends AppCompatActivity implements
         }
     }
 
+    /*google sign in method*/
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    /*google sign out method*/
     private void signOut() {
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {

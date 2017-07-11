@@ -12,7 +12,6 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.example.yijunchen.homes.R;
 
 public class SplashScreenActivity extends Activity implements Animation.AnimationListener {
-    private int splashInterval = 3000;
     BootstrapButton seller, buyer;
     Animation animation;
 

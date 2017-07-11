@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.yijunchen.homes.R;
-import com.example.yijunchen.homes.fragments.AllPropertyFragment;
 import com.example.yijunchen.homes.fragments.CategoryTabFragment;
 import com.example.yijunchen.homes.fragments.MapFragment;
 
@@ -20,12 +19,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final AllPropertyFragment allPropertyFragment = new AllPropertyFragment();
-
         final MapFragment mapFragment = new MapFragment();
-
         final CategoryTabFragment categoryTabFragment = new CategoryTabFragment();
 
+        /* default fragment */
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_fragment_container, categoryTabFragment).commit();
 

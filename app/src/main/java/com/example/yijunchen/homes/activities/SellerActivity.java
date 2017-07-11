@@ -23,11 +23,10 @@ public class SellerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_seller);
 
         final MapFragment mapFragment = new MapFragment();
-
         final CategoryTabFragment categoryTabFragment = new CategoryTabFragment();
-
         final SellerAccountFragment sellerAccountFragment = new SellerAccountFragment();
 
+        /* default fragment */
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_fragment_container, categoryTabFragment).commit();
 

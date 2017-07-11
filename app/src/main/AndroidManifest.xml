@@ -68,7 +68,6 @@
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.SellerActivity" />
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.SignInActivity"></activity>
     </application>
 
 </manifest>
