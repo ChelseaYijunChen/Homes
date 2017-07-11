@@ -18,7 +18,7 @@ import com.example.yijunchen.homes.R;
  * Created by zhangwenpurdue on 7/7/2017.
  */
 
-public class Frag_Filter extends Fragment {
+public class FilterFragment extends Fragment {
     TextView apply_filter;
     TextInputEditText property_name;
     TextInputEditText property_location;
@@ -116,9 +116,9 @@ public class Frag_Filter extends Fragment {
                 url.append(pcatid);
                 Bundle bundle = new Bundle();
                 bundle.putString("url", url.toString());
-                Filtered_List_Frag filtered_list_frag = new Filtered_List_Frag();
-                filtered_list_frag.setArguments(bundle);
-                getFragmentManager().beginTransaction().replace(R.id.main_fragment_container, filtered_list_frag).commit();
+                FilteredResultFragment filtered_resultFragment = new FilteredResultFragment();
+                filtered_resultFragment.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.main_fragment_container, filtered_resultFragment).commit();
             }
         });
 

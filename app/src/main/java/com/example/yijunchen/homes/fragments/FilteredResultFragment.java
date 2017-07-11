@@ -33,7 +33,7 @@ import java.util.List;
  * Created by zhangwenpurdue on 7/10/2017.
  */
 
-public class Filtered_List_Frag extends Fragment {
+public class FilteredResultFragment extends Fragment {
     List<Property> propertyList = new ArrayList<Property>();
     RequestQueue requestQueue;
     static String URL;
