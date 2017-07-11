@@ -11,6 +11,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.yijunchen.homes.models.Property;
+import com.example.yijunchen.homes.models.PropertyList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +25,7 @@ import java.util.List;
  */
 
 public class GetAllProperties {
-    private List<Property> propertyList;
+    private List<Property> propertyList= PropertyList.getInstance();;
     private static GetAllProperties singletonObj;
 
     String GET_JSON_DATA_HTTP_URL = "http://rjtmobile.com/aamir/realestate/realestate_app/getproperty.php";

@@ -51,8 +51,8 @@ public class CategoryTabFragment extends Fragment implements TabLayout.OnTabSele
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         FragmentManager fm = getFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.addToBackStack(null);
+//        FragmentTransaction ft = fm.beginTransaction();
+//        ft.addToBackStack(null);
 
         //Initializing viewPager
         viewPager = (ViewPager) v.findViewById(R.id.category_viewpager);

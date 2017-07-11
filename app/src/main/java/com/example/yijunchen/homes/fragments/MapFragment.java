@@ -28,6 +28,7 @@ import com.example.yijunchen.homes.helperClasses.PermissionUtils;
 import com.example.yijunchen.homes.R;
 import com.example.yijunchen.homes.activities.MainActivity;
 import com.example.yijunchen.homes.models.Property;
+import com.example.yijunchen.homes.models.PropertyList;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -38,11 +39,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.ui.IconGenerator;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -54,30 +50,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
     Context context;
     FitWindowsFrameLayout short_view;
     Property target = new Property();
-    List<Property> propertyList = new ArrayList<>();
+    List<Property> propertyList = PropertyList.getInstance();
     TextView filter;
-
-    String GET_JSON_DATA_HTTP_URL = "http://rjtmobile.com/aamir/realestate/realestate_app/getproperty.php";
-    String JSON_PROPERTY_ID = "PropertyId";
-    String JSON_PROPERTY_NAME = "PropertyName";
-    String JSON_PROPERTY_DESC = "PropertyDesc";
-    String JSON_PROPERTY_TYPE = "PropertyType";
-    String JSON_PROPERTY_CATEGORY = "PropertyCategory";
-    String JSON_PROPERTY_ADDRESS1 = "PropertyAddress1";
-    String JSON_PROPERTY_ADDRESS2 = "PropertyAddress2";
-    String JSON_PROPERTY_ZIP = "PropertyZip";
-    String JSON_PROPERTY_LATITUDE = "PropertyLatitute";
-    String JSON_PROPERTY_LONGITUDE = "PropertyLongtitue";
-    String JSON_PROPERTY_THUMB1 = "PropertyThumb1";
-    String JSON_PROPERTY_THUMB2 = "PropertyThumb2";
-    String JSON_PROPERTY_THUMB3 = "PropertyThumb3";
-    String JSON_PROPERTY_COST = "PropertyCost";
-    String JSON_PROPERTY_SIZE = "PropertySize";
-    String JSON_PROPERTY_STATUS = "PropertyStatus";
-    String JSON_PROPERTY_UPDATE = "PropertyUpdate";
-    String JSON_PROPERTY_SELLER_ID = "PropertySellerID";
-
-    RequestQueue requestQueue;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private boolean mPermissionDenied = false;
@@ -91,14 +65,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        if (propertyList.size() == 0) {
-            JSON_DATA_WEB_CALL();
-        }
-
         View v = inflater.inflate(R.layout.map_fragment, container, false);
         short_view = (FitWindowsFrameLayout) v.findViewById(R.id.short_view);
         filter = (TextView) v.findViewById(R.id.filter);
-
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,11 +97,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
 
         IconGenerator iconFactory = new IconGenerator(getActivity());
         //iconFactory.setColor(Color.argb(0,34,139,34));
-        iconFactory.setStyle(IconGenerator.STYLE_GREEN);
+        //iconFactory.setStyle(IconGenerator.STYLE_GREEN);
 
         for (int i = 0; i < propertyList.size(); i++) {
             Property property = propertyList.get(i);
-            Log.d("property position", property.getLatitude() + " " + property.getLongitude() + " ");
             LatLng pin1 = new LatLng(property.getLatitude(), property.getLongitude());
             if (property.getCategory() == 1) {
                 iconFactory.setStyle(IconGenerator.STYLE_ORANGE);
@@ -225,67 +193,5 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
     public boolean onMyLocationButtonClick() {
         Toast.makeText(getActivity(), "MyLocation button clicked", Toast.LENGTH_SHORT).show();
         return false;
-    }
-
-    public void JSON_DATA_WEB_CALL() {
-
-        StringRequest stringRequest = new StringRequest(GET_JSON_DATA_HTTP_URL,
-
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONArray("Property List");
-                            JSON_PARSE_DATA_AFTER_WEBCALL(jsonArray);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-
-        requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
-    }
-
-    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array) {
-
-        for (int i = 0; i < array.length(); i++) {
-
-            Property property = new Property();
-
-            try {
-                JSONObject json = array.getJSONObject(i);
-                property.setAddress1(json.getString(JSON_PROPERTY_ADDRESS1));
-                property.setAddress2(json.getString(JSON_PROPERTY_ADDRESS2));
-                property.setCategory(json.getInt(JSON_PROPERTY_CATEGORY));
-                property.setCost(json.getDouble(JSON_PROPERTY_COST));
-                property.setDescription(json.getString(JSON_PROPERTY_DESC));
-                property.setId(json.getInt(JSON_PROPERTY_ID));
-                property.setSellerId(json.getInt(JSON_PROPERTY_SELLER_ID));
-                property.setImgThumb1(json.getString(JSON_PROPERTY_THUMB1));
-                property.setImgThumb2(json.getString(JSON_PROPERTY_THUMB2));
-                property.setImgThumb3(json.getString(JSON_PROPERTY_THUMB3));
-                property.setLatitude(Float.parseFloat(json.getString(JSON_PROPERTY_LATITUDE)));
-                property.setLongitude(Float.parseFloat(json.getString(JSON_PROPERTY_LONGITUDE)));
-                property.setName(json.getString(JSON_PROPERTY_NAME));
-                property.setSize(json.getInt(JSON_PROPERTY_SIZE));
-                property.setStatus(json.getString(JSON_PROPERTY_STATUS));
-                property.setZipCode(json.getInt(JSON_PROPERTY_ZIP));
-                property.setType(json.getString(JSON_PROPERTY_TYPE));
-                property.setUpdate(json.getString(JSON_PROPERTY_UPDATE));
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            propertyList.add(property);
-        }
     }
 }

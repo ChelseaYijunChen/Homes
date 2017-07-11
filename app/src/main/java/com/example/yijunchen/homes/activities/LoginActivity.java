@@ -67,8 +67,8 @@ public class LoginActivity extends AppCompatActivity implements
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                startActivity(intent);
             }
 
             @Override
@@ -169,8 +169,8 @@ public class LoginActivity extends AppCompatActivity implements
         } else {
             //mStatusTextView.setText(R.string.signed_out);
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-            Intent intent = new Intent(LoginActivity.this, SplashScreenActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(LoginActivity.this, SplashScreenActivity.class);
+//            startActivity(intent);
             //findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
     }

@@ -26,6 +26,7 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.yijunchen.homes.R;
 import com.example.yijunchen.homes.adapters.RecycleViewAdapter_SubCategory;
 import com.example.yijunchen.homes.models.Property;
+import com.example.yijunchen.homes.models.PropertyList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,7 +47,8 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
     private final String RECYCLERVIEW_POSITION = "POSITIONS";
     private final String TAG = TabOneFragment.class.getCanonicalName();
     ArrayList<Property> propertyList = new ArrayList<>();
-    List<Property> rentPropertyList = new ArrayList<>();
+    //List<Property> propertyList2 = PropertyList.getInstance();
+    //List<Property> rentPropertyList = new ArrayList<>();
 
     String GET_JSON_DATA_HTTP_URL = "http://rjtmobile.com/aamir/realestate/realestate_app/getproperty.php";
     String JSON_PROPERTY_ID = "PropertyId";
@@ -78,19 +80,23 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-//        if(propertyList.size() == 0){
-//            JSON_DATA_WEB_CALL();
-//        }
-        if (mBundleRecyclerviewState == null) {
+        if(propertyList.size() == 0){
             JSON_DATA_WEB_CALL();
-        } else {
-            restorePreviousState();
         }
+//        if (mBundleRecyclerviewState == null) {
+//            JSON_DATA_WEB_CALL();
+//        } else {
+//            restorePreviousState();
+//        }
+
         View v = inflater.inflate(R.layout.category_one, container, false);
 
         mDemoSlider = (SliderLayout) v.findViewById(R.id.rent_slider);
         showSlider(mDemoSlider);
 
+//        for (int i = 0; i < propertyList2.size(); i++) {
+//            Log.v("tab one fragment", propertyList2.get(i).toString());
+//        }
         recyclerView = (RecyclerView) v.findViewById(R.id.rent_all_property_recycleview);
         recycleViewAdapter_subCategory = new RecycleViewAdapter_SubCategory(propertyList, getContext());
         recycleViewAdapter_subCategory.setOnItemClickListener(new RecycleViewAdapter_SubCategory.OnRecyclerViewItemClickListener() {
@@ -113,6 +119,7 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
             }
         });
         recyclerView.setAdapter(recycleViewAdapter_subCategory);
+        recycleViewAdapter_subCategory.notifyDataSetChanged();
         recyclerViewlayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(recyclerViewlayoutManager);
         recyclerView.setHasFixedSize(true);
@@ -120,23 +127,23 @@ public class TabOneFragment extends Fragment implements BaseSliderView.OnSliderC
         return v;
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mBundleRecyclerviewState = outState;
-        Parcelable listState = recyclerView.getLayoutManager().onSaveInstanceState();
-        mBundleRecyclerviewState.putParcelable(keyRecyclerviewState, listState);
-        mBundleRecyclerviewState.putParcelableArrayList(RECYCLERVIEW_POSITION, propertyList);
-    }
-
-    //Restore saved recyclerview items
-    private void restorePreviousState() {
-        Parcelable listState = mBundleRecyclerviewState.getParcelable(keyRecyclerviewState);
-        propertyList = mBundleRecyclerviewState.getParcelableArrayList(RECYCLERVIEW_POSITION);
-        recyclerViewlayoutManager.onRestoreInstanceState(listState);
-        Log.d(TAG, "restore list" + propertyList.toString());
-        Log.d(TAG, "restore called");
-    }
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        mBundleRecyclerviewState = outState;
+//        Parcelable listState = recyclerView.getLayoutManager().onSaveInstanceState();
+//        mBundleRecyclerviewState.putParcelable(keyRecyclerviewState, listState);
+//        mBundleRecyclerviewState.putParcelableArrayList(RECYCLERVIEW_POSITION, propertyList2);
+//    }
+//
+//    //Restore saved recyclerview items
+//    private void restorePreviousState() {
+//        Parcelable listState = mBundleRecyclerviewState.getParcelable(keyRecyclerviewState);
+//        propertyList2 = mBundleRecyclerviewState.getParcelableArrayList(RECYCLERVIEW_POSITION);
+//        recyclerViewlayoutManager.onRestoreInstanceState(listState);
+//        Log.d(TAG, "restore list" + propertyList2.toString());
+//        Log.d(TAG, "restore called");
+//    }
 
     public void showSlider(SliderLayout sliderLayout) {
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
